@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a new Recipe</title>
+</head>
+<body>
+<form action="#" th:action="@{/addrecipe}" th:object="${recipe}" method="post">
+    <label for="recipeTitle">Title</label>
+    <input type="text" th:field="*{recipeTitle}" id="recipeTitle" placeholder="Title">
+    <span th:if="${#fields.hasErrors('recipeTitle')}" th:errors="*{title}"></span>
+    <label for="recipeText">Recipe</label>
+    <!-- I replaced input with textarea
+    <input type="text" th:field="*{recipeText}" id="recipeText" placeholder="Text"> -->
+    <textarea type ="text" th:field="*{recipeText}" id="recipeText" placeholder="Recipe" rows="4" cols="50"></textarea>
+    <span th:if="${#fields.hasErrors('recipeText')}" th:errors="*{recipeText}"></span>
+    <label for="recipeTag">Tag</label>
+    <input type="text" th:field="*{recipeTag}" id="recipeTag" placeholder="Tag">
+    <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag"></span>
+    <input type="submit" value="Add Recipe">
+</form>
+
+</body>
+</html>
