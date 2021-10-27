@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href=@{/css/styles.css} rel="stylesheet">
+    <title>Recipe</title>
+
+</head>
+<body>
+<<<<<<< HEAD:Recipe/src/main/resources/templates/recipe.html
+
+        <div class="recipe" th:each="recipe : ${recipe}"> <!-- th=thymeleaf -> th:each == for each loop
+                                                where recipe exists in a repo of recipes -->
+            <p th:text="${recipe.recipeTitle}"></p>
+            <p th:text="${recipe.recipeText}"></p>
+            <p th:text="${recipe.recipeTag}"></p>
+        </div>
+
+=======
+<tr th:each="recipe : ${recipe}">
+    <!-- th=thymeleaf -> th:each == for each loop
+      where recipe exists in a repo of recipes -->
+    <td style="text-align:center" th:text="${recipe.recipeTitle}"></td>
+    <td style="text-align:center" th:text="${recipe.recipeText}"></td>
+    <td style="text-align:center" th:text="${recipe.recipeTag}"></td>
+</tr>
+>>>>>>> d562244e463ef5eacef333b66be249ef8db21252:Recipe/src/main/resources/templates/userRecipe.html
+
+</body>
+</html>
