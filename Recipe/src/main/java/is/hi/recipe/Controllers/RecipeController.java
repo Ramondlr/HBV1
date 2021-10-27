@@ -36,6 +36,12 @@ public class RecipeController {
 
         return "home";
     }
+    //Ramon. Tímabundið. Hægt að bæta í eða eyða.
+    @RequestMapping(value = "/recipe", method = RequestMethod.GET)
+    public String viewRecipe(Recipe recipe){
+
+        return "recipe";
+    }
 
     @RequestMapping(value = "/addrecipe", method = RequestMethod.GET)
     public String addRecipe(Recipe recipe){

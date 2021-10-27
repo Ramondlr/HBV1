@@ -13,8 +13,9 @@
     </tr>
 </head>
 <body>
-<tr th:each="recipe : ${recipe}"> <!-- th=thymeleaf -> th:each == for each loop
-                                                where recipe exists in a repo of recipes -->
+<tr th:each="recipe : ${recipe}">
+    <!-- th=thymeleaf -> th:each == for each loop
+      where recipe exists in a repo of recipes -->
     <td style="text-align:center" th:text="${recipe.recipeTitle}"></td>
     <td style="text-align:center" th:text="${recipe.recipeText}"></td>
     <td style="text-align:center" th:text="${recipe.recipeTag}"></td>
