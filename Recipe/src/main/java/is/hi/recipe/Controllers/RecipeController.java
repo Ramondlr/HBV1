@@ -63,4 +63,10 @@ public class RecipeController {
         // Redirects the user to the home page
         return "redirect:/";
     }
+
+    @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
+    public String getRecipe(@PathVariable("id") long id, Model model){
+        model.addAttribute("recipe", recipeService.findByID(id));
+        return "/recipe";
+    }
 }
