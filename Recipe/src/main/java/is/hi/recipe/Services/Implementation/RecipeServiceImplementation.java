@@ -16,7 +16,6 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Autowired
     public RecipeServiceImplementation(RecipeRepository recipeRepository) {
-        // Create 3 random recipes for our dummy repo.  To be removed when JPA added.
         this.recipeRepository = recipeRepository;
         //JPA gives each recipe an ID, but here we add them manually
     }
