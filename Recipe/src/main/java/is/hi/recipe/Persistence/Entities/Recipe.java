@@ -13,7 +13,6 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
 
-    private long userID;
     private String recipeTitle;
     private String recipeText;
     private String recipeTag;
@@ -29,20 +28,16 @@ public class Recipe {
     @ManyToOne(fetch = FetchType.LAZY)
     private Recipe recipe;
 
-
-    // Link a book to a user, or in our case, recipe to a user.  Find new name for an Entitie Rental and new variable.
-    // private List<Recipe> recipes = new ArrayList<>();
-
-
     public Recipe() {
     }
 
-    public Recipe(String title, String text, String tag) {
+    public Recipe(String title, String text, String tag, User id) {
         this.recipeTitle = title;
         this.recipeText = text;
         this.recipeTag = tag;
     }
 
+    /*
     public long getUserID() {
         return userID;
     }
@@ -50,6 +45,7 @@ public class Recipe {
     public void setUserID(long userID) {
         this.userID = userID;
     }
+     */
 
     public long getID() {
         return ID;
