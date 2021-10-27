@@ -6,17 +6,21 @@
 </head>
 <body>
 
-<div id="backround_images"></div>
-
-<h2>Login to your account</h2>
+<h2 class="login-h2">Login to your account</h2>
 
 <form action="#" th:action="@{/login}" th:object="${user}"  method="post">
 
-    <input type="text" name="username" id="username" th:field="*{username}"/>
+    <div class="form-field">
+        <input type="text" name="username" id="username" th:field="*{username}" placeholder="Username" required/>
+    </div>
 
-    <input type="text" name="password" id="password" th:value="*{password}"/>
+    <div class="form-field">
+        <input type="text" name="password" id="password" th:value="*{password}" placeholder="Password" required/>
+    </div>
 
-    <input type="submit" value="Login"/>
+    <div class="form-field">
+        <input class="btn" type="submit" value="Login"  />
+    </div>
 </form>
 </body>
 </html>
