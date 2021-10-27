@@ -8,11 +8,12 @@
 <body>
 
 <!--We add a div, depending on if it is true or not-->
-<<<<<<< HEAD
+
 <div>
     <p><a href="/signup">Sign up</a></p>
     <p><a href="/login">Login</a></p>
-=======
+</div>
+
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
                                 our model.attribute() metohd in our RecipeController inside our
                                 homePage method.-->
@@ -41,7 +42,6 @@
         </table>
     </div>
     <p><a href="/addrecipe">Add a new recipe</a></p>
->>>>>>> ae68febd3b6f92f65e3f7757ef8fb155834b212c
 </div>
 
 
