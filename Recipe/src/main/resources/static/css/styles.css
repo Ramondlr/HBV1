@@ -5,6 +5,13 @@ a {
     text-decoration: none;
 }
 
+@charset "UTF-8";
+
+
+a {
+    text-decoration: none;
+}
+
 h2 {
     font-size: 30px;
     margin: 0;
@@ -25,4 +32,7 @@ h2 {
     content:"\a";
     white-space: pre;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 73b5231a2fac31acce2cd0f890398effad4d1641
