@@ -8,42 +8,10 @@
 <body>
 
 <!--We add a div, depending on if it is true or not-->
-
 <div>
     <p><a href="/signup">Sign up</a></p>
     <p><a href="/login">Login</a></p>
 </div>
-
-<div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
-                                our model.attribute() metohd in our RecipeController inside our
-                                homePage method.-->
-    <h2 th:case="null">No Books yet!</h2>
-    <div th:case="*">
-        <h2>Recipes</h2>
-        <table style="text-align:center" >
-            <thead>
-            <tr>
-                <th>Title of recipe</th>
-                <th>Recipe</th>
-                <th>Tag</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
-                                                where recipe exists in a repo of recipes -->
-                <td style="text-align:center" th:text="${recipe.recipeTitle}"></td>
-                <td style="text-align:center" th:text="${recipe.recipeText}"></td>
-                <td style="text-align:center" th:text="${recipe.recipeTag}"></td>
-                <td style="text-align:center"><a th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></td>
-                <td style="text-align:center"><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <p><a href="/addrecipe">Add a new recipe</a></p>
-</div>
-
 
 </body>
 </html>

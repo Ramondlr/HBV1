@@ -4,28 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <link th:href=@{/css/styles.css} rel="stylesheet">
-    <title>Recipe</title>
+    <title>Recipes</title>
 
 </head>
 <body>
-<<<<<<< HEAD:Recipe/src/main/resources/templates/recipe.html
 
-        <div class="recipe" th:each="recipe : ${recipe}"> <!-- th=thymeleaf -> th:each == for each loop
-                                                where recipe exists in a repo of recipes -->
-            <p th:text="${recipe.recipeTitle}"></p>
-            <p th:text="${recipe.recipeText}"></p>
-            <p th:text="${recipe.recipeTag}"></p>
-        </div>
+<!-- <p th:text="${LoggedInUser.username}">Velkomin/n: </p> -->
 
-=======
-<tr th:each="recipe : ${recipe}">
-    <!-- th=thymeleaf -> th:each == for each loop
-      where recipe exists in a repo of recipes -->
-    <td style="text-align:center" th:text="${recipe.recipeTitle}"></td>
-    <td style="text-align:center" th:text="${recipe.recipeText}"></td>
-    <td style="text-align:center" th:text="${recipe.recipeTag}"></td>
-</tr>
->>>>>>> d562244e463ef5eacef333b66be249ef8db21252:Recipe/src/main/resources/templates/userRecipe.html
+
+<div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
+                                our model.attribute() metohd in our RecipeController inside our
+                                homePage method.-->
+    <h2 th:case="null">No recipes yet!</h2>
+    <div th:case="*">
+        <h2>Recipes</h2>
+        <table style="text-align:center" >
+            <thead>
+            <tr>
+                <th>Title of recipe</th>
+                <th>Recipe</th>
+                <th>Tag</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
+                                                            where recipe exists in a repo of recipes -->
+                <td th:text="${recipe.recipeTitle}"></td>
+                <td th:text="${recipe.recipeText}"></td>
+                <td th:text="${recipe.recipeTag}"></td>
+                <td><a th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/newRecipe">Add a new recipe</a></p>
+</div>
 
 </body>
 </html>

@@ -6,7 +6,7 @@
     <title>Add a new Recipe</title>
 </head>
 <body>
-<form action="#" th:action="@{/addrecipe}" th:object="${recipe}" method="post">
+<form action="#" th:action="@{/newRecipe}" th:object="${recipe}" method="post">
     <label for="recipeTitle">Title</label>
     <input type="text" th:field="*{recipeTitle}" id="recipeTitle" placeholder="Title">
     <span th:if="${#fields.hasErrors('recipeTitle')}" th:errors="*{title}"></span>

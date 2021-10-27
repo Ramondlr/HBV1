@@ -6,7 +6,6 @@ a {
 }
 
 h2 {
-<<<<<<< HEAD
     font-size: 10px;
 }
 
@@ -88,10 +87,6 @@ form .btn {
   font-size: 17px;
   text-indent: 5px
 }
-=======
-    font-size: 30px;
-    margin: 0;
-}
 
 .recipe{
     display: flex;
@@ -109,4 +104,3 @@ form .btn {
     white-space: pre;
 }
 
->>>>>>> 47488add78f7f671667747aece212785f1769f1c

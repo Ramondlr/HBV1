@@ -27,14 +27,18 @@ public class RecipeController {
     // Strengurinn inní 'RequestMapping' segir okkur að þegar vefsíðan er stödd á forsíðu þá á hún að skila 'home'
     // sem er 'return "home"' og þetta 'home' er nafnið á html skjalinu okkar í templates
     @RequestMapping("/")
-    public String RecipeController(Model model){
+    public String homePage(Model model){
+        return "home";
+    }
 
+    @RequestMapping("/userRecipe")
+    public String userRecipeController(Model model){
         //Call a method in a service class
         List<Recipe> allRecipes = recipeService.findAll();
         //Add some data to the model
         model.addAttribute("recipes", allRecipes);
 
-        return "home";
+        return "userRecipe";
     }
     //Ramon. Tímabundið. Hægt að bæta í eða eyða.
     @RequestMapping(value = "/recipe", method = RequestMethod.GET)
@@ -43,22 +47,22 @@ public class RecipeController {
         return "recipe";
     }
 
-    @RequestMapping(value = "/addrecipe", method = RequestMethod.GET)
-    public String addRecipe(Recipe recipe){
+    @RequestMapping(value = "/newRecipe", method = RequestMethod.GET)
+    public String newRecipeGET(Recipe recipe){
 
         return "newRecipe";
     }
 
-    @RequestMapping(value = "/addrecipe", method = RequestMethod.POST)
-    public String addRecipe(Recipe recipe, BindingResult result, Model model){
+    @RequestMapping(value = "/newRecipe", method = RequestMethod.POST)
+    public String newRecipePOST(Recipe recipe, BindingResult result, Model model){
         if(result.hasErrors()){
             return "newRecipe";
         }
         recipeService.save((recipe));
         // Redirects the page to our home page
-        return "redirect:/";
-
+        return "redirect:/userRecipe";
     }
+
 
     // GET means we're reading something, POST means we're creating something.
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -67,7 +71,7 @@ public class RecipeController {
         Recipe recipeToDelete = recipeService.findByID(id);
         recipeService.delete(recipeToDelete);
         // Redirects the user to the home page
-        return "redirect:/";
+        return "redirect:/userRecipe";
     }
 
     @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)

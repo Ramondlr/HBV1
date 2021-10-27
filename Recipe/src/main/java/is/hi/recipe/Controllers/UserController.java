@@ -57,9 +57,9 @@ public class UserController {
         if(exists != null){
             session.setAttribute("LoggedInUser", exists);
             model.addAttribute("LoggedInUser", exists);
-            return "LoggedInUser";
+            return "redirect:/userRecipe";
         }
-        return "redirect:/";
+        return "redirect:/userRecipe";
     }
 
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
