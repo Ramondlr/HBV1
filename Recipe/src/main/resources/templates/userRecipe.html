@@ -34,6 +34,7 @@
                 <td th:text="${recipe.recipeText}"></td>
                 <td th:text="${recipe.recipeTag}"></td>
                 <td><a th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></td>
+                <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
             </tr>
             </tbody>
         </table>
