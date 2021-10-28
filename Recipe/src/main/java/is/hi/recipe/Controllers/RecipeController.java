@@ -43,7 +43,7 @@ public class RecipeController {
 
     //Ramon. Tímabundið. Hægt að bæta í eða eyða.
     @RequestMapping(value = "/recipe", method = RequestMethod.GET)
-    public String viewRecipe(){
+    public String viewRecipe(Recipe recipe){
 
         return "recipe";
     }
@@ -81,19 +81,21 @@ public class RecipeController {
         return "/recipe";
     }
 
-    @RequestMapping(value = "/editRecipe{id}", method = RequestMethod.GET)
-    public String editRecipeGET(@PathVariable("id") long id, Model model){
-        model.addAttribute("recipe", recipeService.findByID(id));
+    @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.GET)
+    public String editRecipeGET(@PathVariable("id") long id, Model model, Recipe recipe){
+        model.addAttribute("recipes", recipeService.findByID(id));
         return "/editRecipe";
     }
 
-    @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
-    public String editRecipePOST( Recipe recipe, BindingResult result){
+    @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.POST)
+    public String editRecipePOST(@PathVariable("id") Recipe recipe, BindingResult result, long id){
         if(result.hasErrors()){
             return "editRecipe";
         }
+        Recipe recipeToDelete = recipeService.findByID(id);
+        recipeService.delete(recipeToDelete);
         recipeService.save((recipe));
         // Redirects the page to our home page
-        return "redirect:/recipe";
+        return "redirect:/recipe/{id}";
     }
 }
