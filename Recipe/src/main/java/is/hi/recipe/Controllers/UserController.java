@@ -1,7 +1,6 @@
 package is.hi.recipe.Controllers;
 
 import is.hi.recipe.Persistence.Entities.User;
-import is.hi.recipe.Services.RecipeService;
 import is.hi.recipe.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     UserService userService;
-    RecipeService recipeService;
 
     @Autowired
     public UserController(UserService userService){
