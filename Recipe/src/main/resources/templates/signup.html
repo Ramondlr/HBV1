@@ -5,11 +5,28 @@
     <title>Signup</title>
 </head>
 <body>
-<h2>Signup for an account</h2>
-<form action="#" th:action="@{/signup}" th:object="${user}"  method="post">
-    <input type="text" name="username" id="username" th:field="*{username}"/>
-    <input type="text" name="password" id="password" th:value="*{password}"/>
-    <input type="submit" value="Sign up"/>
+
+<h2 class ="signup-h2">Create account</h2>
+
+<form action="#" th:action="@{/signup}" th:object="${user}"  method="post" >
+
+    <div class="form-field">
+    <input type="text" name="username" id="username" th:field="*{username}" placeholder="Username" required/>
+    </div>
+
+    <div class="form-field">
+    <input type="text" name="password" id="password" th:value="*{password}" placeholder="Password" required/>
+    </div>
+
+    <div class="form-field">
+    <input class="btn" type="submit" value="Sign up"/>
+    </div>
+
+    <section class="row">
+        <p class="signup"> Already logged in? <a href="login">Click here</a></p>
+    </section>
+
 </form>
+
 </body>
 </html>
