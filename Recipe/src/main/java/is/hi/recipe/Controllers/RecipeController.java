@@ -27,7 +27,7 @@ public class RecipeController {
     // Strengurinn inní 'RequestMapping' segir okkur að þegar vefsíðan er stödd á forsíðu þá á hún að skila 'home'
     // sem er 'return "home"' og þetta 'home' er nafnið á html skjalinu okkar í templates
     @RequestMapping("/")
-    public String homePage(Model model){
+    public String homePage(){
         return "home";
     }
 
@@ -40,6 +40,7 @@ public class RecipeController {
 
         return "userRecipe";
     }
+
     //Ramon. Tímabundið. Hægt að bæta í eða eyða.
     @RequestMapping(value = "/recipe", method = RequestMethod.GET)
     public String viewRecipe(Recipe recipe){
@@ -54,7 +55,7 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.POST)
-    public String newRecipePOST(Recipe recipe, BindingResult result, Model model){
+    public String newRecipePOST(Recipe recipe, BindingResult result){
         if(result.hasErrors()){
             return "newRecipe";
         }
@@ -66,7 +67,7 @@ public class RecipeController {
 
     // GET means we're reading something, POST means we're creating something.
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteRecipe(@PathVariable("id") long id, Model model){
+    public String deleteRecipe(@PathVariable("id") long id){
         //Business Logic is always on the service that's why we let the recipeService do all the work
         Recipe recipeToDelete = recipeService.findByID(id);
         recipeService.delete(recipeToDelete);

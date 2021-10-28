@@ -17,13 +17,13 @@ public class RecipeServiceImplementation implements RecipeService {
     @Autowired
     public RecipeServiceImplementation(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
-        //JPA gives each recipe an ID, but here we add them manually
     }
 
     @Override
     public Recipe findByRecipeTitle(String recipeTitle) {
         // Þurfum að lagfæra þetta seinna meir
-        return recipeRepository.findByRecipeTitle(recipeTitle).get(0);
+
+        return (Recipe) recipeRepository.findByRecipeTitle(recipeTitle);
     }
 
     @Override
