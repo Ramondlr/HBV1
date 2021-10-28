@@ -45,7 +45,7 @@ public class RecipeController {
     @RequestMapping(value = "/recipe", method = RequestMethod.GET)
     public String viewRecipe(Recipe recipe){
 
-        return "recipe";
+        return "viewRecipe";
     }
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.GET)
@@ -78,7 +78,7 @@ public class RecipeController {
     @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
     public String getRecipe(@PathVariable("id") long id, Model model){
         model.addAttribute("recipe", recipeService.findByID(id));
-        return "/recipe";
+        return "viewRecipe";
     }
 
     // Birtir uppskrift til að breyta
@@ -86,18 +86,20 @@ public class RecipeController {
     public String editRecipeGET(@PathVariable("id") long id, Model model, Recipe recipe){
         model.addAttribute("recipes", recipeService.findByID(id));
         return "editRecipe";
+
     }
 
     // Virkar ekki að post-a og vista breytta uppskrift TODO Laga það
     @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.POST)
     public String editRecipePOST(@PathVariable("id") Recipe recipe, BindingResult result, long id){
-        if(result.hasErrors()){
-            return "editRecipe";
+        if(result.hasErrors()) {
+            recipe.setID(id);
+            return "editRecipe/{id}";
         }
-        Recipe recipeToDelete = recipeService.findByID(id);
-        recipeService.delete(recipeToDelete);
-        recipeService.save((recipe));
-        // Redirects the page to our home page
+
+        recipeService.save(recipe);
+
+        // Redirects the page to our designated html page
         return "redirect:/recipe/{id}";
     }
 }

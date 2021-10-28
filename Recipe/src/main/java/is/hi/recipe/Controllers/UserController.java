@@ -40,7 +40,8 @@ public class UserController {
 
         User exists = userService.findByUsername(user.getUsername());
 
-        // TODO búa til if condition til að checka ef exists != null þ.e.a.s. ef það er núþegar til user með saman username
+        // TODO búa til if condition til að checka ef exists != null þ.e.a.s. ef það er núþegar til user með sama
+        //  username að meðhöndla þá villu.
 
         if(exists == null){
             userService.save(user);
