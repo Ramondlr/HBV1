@@ -81,14 +81,14 @@ public class RecipeController {
         return "/recipe";
     }
 
+    // Birtir uppskrift til að breyta
     @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.GET)
     public String editRecipeGET(@PathVariable("id") long id, Model model, Recipe recipe){
         model.addAttribute("recipes", recipeService.findByID(id));
         return "editRecipe";
     }
 
-    // Virkar ekki að posta og vista breytta uppskrift TODO Laga það
-
+    // Virkar ekki að post-a og vista breytta uppskrift TODO Laga það
     @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.POST)
     public String editRecipePOST(@PathVariable("id") Recipe recipe, BindingResult result, long id){
         if(result.hasErrors()){
