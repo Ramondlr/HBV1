@@ -22,16 +22,15 @@
             <thead>
             <tr>
                 <th>Title of recipe</th>
-                <th>Recipe</th>
                 <th>Tag</th>
-                <th>Delete</th>
+                <th>Delete Recipe</th>
+                <th>View Recipe</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
                                                             where recipe exists in a repo of recipes -->
                 <td th:text="${recipe.recipeTitle}"></td>
-                <td th:text="${recipe.recipeText}"></td>
                 <td th:text="${recipe.recipeTag}"></td>
                 <td><a th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></td>
                 <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>

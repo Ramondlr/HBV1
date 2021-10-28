@@ -9,6 +9,7 @@
 </head>
 <body>
 <div>
+    <!-- th:action="@{/editRecipe}"  -> th:action skal ekki innihalda /{id} eftir /editRecipe  -->
     <form action="#" th:action="@{/editRecipe}" th:object="${recipes}" method="post">
         <div class="recipe" th:each="recipe : ${recipes}">
             <label for="recipeTitle">Title</label>
