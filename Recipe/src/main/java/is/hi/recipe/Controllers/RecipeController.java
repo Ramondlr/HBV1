@@ -92,7 +92,7 @@ public class RecipeController {
     @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.POST)
     public String editRecipePOST(@PathVariable("id") Recipe recipe, BindingResult result, long id){
         if(result.hasErrors()){
-            return "recipe";
+            return "editRecipe";
         }
         Recipe recipeToDelete = recipeService.findByID(id);
         recipeService.delete(recipeToDelete);
