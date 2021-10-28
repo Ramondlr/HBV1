@@ -43,7 +43,7 @@ public class RecipeController {
 
     //Ramon. Tímabundið. Hægt að bæta í eða eyða.
     @RequestMapping(value = "/recipe", method = RequestMethod.GET)
-    public String viewRecipe(Recipe recipe){
+    public String viewRecipe(){
 
         return "recipe";
     }
@@ -81,14 +81,14 @@ public class RecipeController {
         return "/recipe";
     }
 
-    @RequestMapping(value = "/editRecipe", method = RequestMethod.GET)
-    public String editRecipeGET(Recipe recipe){
-
-        return "editRecipe";
+    @RequestMapping(value = "/editRecipe{id}", method = RequestMethod.GET)
+    public String editRecipeGET(@PathVariable("id") long id, Model model){
+        model.addAttribute("recipe", recipeService.findByID(id));
+        return "/editRecipe";
     }
 
-    @RequestMapping(value = "/editRecipes", method = RequestMethod.POST)
-    public String editRecipePOST(Recipe recipe, BindingResult result){
+    @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
+    public String editRecipePOST( Recipe recipe, BindingResult result){
         if(result.hasErrors()){
             return "editRecipe";
         }

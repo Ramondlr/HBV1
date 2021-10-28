@@ -9,13 +9,13 @@
 </head>
 <body>
 <div>
-    <div class="recipe" th:each="recipe : ${recipe}"> <!-- th=thymeleaf -> th:each == for each loop
-                                            where recipe exists in a repo of recipes -->
+    <!-- th=thymeleaf -> th:each == for each loop where recipe exists in a repo of recipes -->
+    <div class="recipe" th:each="recipe : ${recipe}">
         <p th:text="${recipe.recipeTitle}"></p>
         <p th:text="${recipe.recipeText}"></p>
         <p th:text="${recipe.recipeTag}"></p>
     </div>
-    <p><a href="/editRecipe">Edit recipe</a></p>
+    <p><a th:href="@{/editRecipe/{id}(id=${recipe.ID})}">Edit recipe</a></p>
     <p><a href="/userRecipe">Back recipes</a></p>
 </div>
 
