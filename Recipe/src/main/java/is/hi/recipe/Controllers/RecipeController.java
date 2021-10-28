@@ -80,4 +80,20 @@ public class RecipeController {
         model.addAttribute("recipe", recipeService.findByID(id));
         return "/recipe";
     }
+
+    @RequestMapping(value = "/editRecipe", method = RequestMethod.GET)
+    public String editRecipeGET(Recipe recipe){
+
+        return "editRecipe";
+    }
+
+    @RequestMapping(value = "/editRecipes", method = RequestMethod.POST)
+    public String editRecipePOST(Recipe recipe, BindingResult result){
+        if(result.hasErrors()){
+            return "editRecipe";
+        }
+        recipeService.save((recipe));
+        // Redirects the page to our home page
+        return "redirect:/recipe";
+    }
 }
