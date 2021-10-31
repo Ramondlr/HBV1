@@ -42,11 +42,11 @@ public class RecipeController {
     }
 
     //Ramon. Tímabundið. Hægt að bæta í eða eyða.
-    @RequestMapping(value = "/recipe", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/recipe", method = RequestMethod.GET)
     public String viewRecipe(Recipe recipe){
 
         return "viewRecipe";
-    }
+    }*/
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.GET)
     public String newRecipeGET(Recipe recipe){
@@ -86,20 +86,13 @@ public class RecipeController {
     public String editRecipeGET(@PathVariable("id") long id, Model model, Recipe recipe){
         model.addAttribute("recipes", recipeService.findByID(id));
         return "editRecipe";
-
     }
 
     // Virkar ekki að post-a og vista breytta uppskrift TODO Laga það
-    @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.POST)
-    public String editRecipePOST(@PathVariable("id") Recipe recipe, BindingResult result, long id){
-        if(result.hasErrors()) {
-            recipe.setID(id);
-            return "editRecipe/{id}";
-        }
-
+    @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
+    public String editRecipePOST(Recipe recipe, Model model){
         recipeService.save(recipe);
-
         // Redirects the page to our designated html page
-        return "redirect:/recipe/{id}";
+        return "viewRecipe";
     }
 }

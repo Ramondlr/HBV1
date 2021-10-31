@@ -30,6 +30,8 @@
                 <td th:text="${recipe.recipeTag}"></td>
                 <td><a th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></td>
                 <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
+                <td><a th:href="@{/editRecipe/{id}(id=${recipe.ID})}">Edit</a></td>
+
             </tr>
             </tbody>
         </table>

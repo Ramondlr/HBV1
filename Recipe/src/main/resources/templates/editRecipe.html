@@ -13,6 +13,7 @@
     <form action="#" th:action="@{/editRecipe}" th:object="${recipes}" method="post">
         <div class="recipe" th:each="recipe : ${recipes}">
             <label for="recipeTitle">Title</label>
+            <input type="hidden" th:field="${recipes.ID}" id="recipeID" placeholder="Title">
             <input type="text" th:field="*{recipeTitle}" id="recipeTitle" placeholder="Title">
             <span th:if="${#fields.hasErrors('recipeTitle')}" th:errors="*{title}"></span>
             <label for="recipeText">Recipe</label>
@@ -27,6 +28,7 @@
         </div>
     </form>
     <a href="/userRecipe">Back to recipes</a>
+    <p><a th:href="@{/updateRecipe/{id}(id=${recipe.ID})}">Update recipe</a></p>
 </div>
 </body>
 </html>
