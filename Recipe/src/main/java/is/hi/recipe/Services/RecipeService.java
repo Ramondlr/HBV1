@@ -10,5 +10,4 @@ public interface RecipeService {
     Recipe findByID(long ID);
     Recipe save(Recipe recipe);
     void delete(Recipe recipe);
-
 }

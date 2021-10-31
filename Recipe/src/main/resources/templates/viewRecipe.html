@@ -11,8 +11,11 @@
 <div>
     <!-- th=thymeleaf -> th:each == for each loop where recipe exists in a repo of recipes -->
     <div class="recipe">
+        <label>Title</label>
         <p th:text="${recipe.recipeTitle}"></p>
+        <label>Recipe</label>
         <p th:text="${recipe.recipeText}"></p>
+        <label>Tag</label>
         <p th:text="${recipe.recipeTag}"></p>
     </div>
     <p><a th:href="@{/editRecipe/{id}(id=${recipe.ID})}">Edit recipe</a></p>

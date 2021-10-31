@@ -41,12 +41,7 @@ public class RecipeController {
         return "userRecipe";
     }
 
-    //Ramon. Tímabundið. Hægt að bæta í eða eyða.
-    /*@RequestMapping(value = "/recipe", method = RequestMethod.GET)
-    public String viewRecipe(Recipe recipe){
 
-        return "viewRecipe";
-    }*/
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.GET)
     public String newRecipeGET(Recipe recipe){
@@ -88,10 +83,10 @@ public class RecipeController {
         return "editRecipe";
     }
 
-    // Virkar ekki að post-a og vista breytta uppskrift TODO Laga það
     @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
     public String editRecipePOST(Recipe recipe, Model model){
         recipeService.save(recipe);
+
         // Redirects the page to our designated html page
         return "viewRecipe";
     }
