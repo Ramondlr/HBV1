@@ -45,4 +45,13 @@ public class RecipeServiceImplementation implements RecipeService {
     public void delete(Recipe recipe) {
         recipeRepository.delete(recipe);
     }
+
+    @Override
+    public Recipe editRecipe(Recipe recipe, long id) {
+        Recipe old = recipeRepository.findByID(id);
+        old.setRecipeTitle(recipe.getRecipeTitle());
+        old.setRecipeText(recipe.getRecipeText());
+        old.setRecipeTag(recipe.getRecipeTag());
+        return recipe;
+    }
 }
