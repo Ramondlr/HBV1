@@ -9,18 +9,27 @@
 <body>
 <div>
     <form action="#" th:action="@{/newRecipe}" th:object="${recipe}" method="post">
-        <label for="recipeTitle">Title</label>
+
+        <label for="recipeTitle">Name your recipe</label>
         <input type="text" th:field="*{recipeTitle}" id="recipeTitle" placeholder="Title">
         <span th:if="${#fields.hasErrors('recipeTitle')}" th:errors="*{title}"></span>
+
         <label for="recipeText">Recipe</label>
         <!-- I replaced input with textarea
         <input type="text" th:field="*{recipeText}" id="recipeText" placeholder="Text"> -->
-        <textarea type ="text" th:field="*{recipeText}" id="recipeText" placeholder="Recipe" rows="4" cols="50"></textarea>
+        <textarea class = "textarea_newRecipe" type ="text" th:field="*{recipeText}" id="recipeText" placeholder="Description" rows="4" cols="50"></textarea>
         <span th:if="${#fields.hasErrors('recipeText')}" th:errors="*{recipeText}"></span>
+
         <label for="recipeTag">Tag</label>
-        <input type="text" th:field="*{recipeTag}" id="recipeTag" placeholder="Tag">
+        <input class = "textarea_newRecipe" type="text" th:field="*{recipeTag}" id="recipeTag" placeholder="Tag your recipe">
+
         <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag"></span>
-        <input type="submit" value="Add Recipe">
+
+        <div class = "form-field2">
+        <input class = "btn" type="submit" value="Add Recipe">
+        </div>
+
+
     </form>
 </div>
 
