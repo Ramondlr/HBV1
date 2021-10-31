@@ -97,8 +97,9 @@ form .btn {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    font-size: 40px;
+    font-size: 30px;
 }
+
 
 .recipe p{
     padding: 30px;
@@ -107,6 +108,10 @@ form .btn {
     text-align:center;
     content:"\a";
     white-space: pre;
+}
+
+label {
+  font-size: 17px;
 }
 
 .textarea_newRecipe {
