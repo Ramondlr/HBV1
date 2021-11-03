@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -84,10 +86,11 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
-    public String editRecipePOST(Recipe recipe, Model model){
+    public String editRecipePOST(Recipe recipe){
         recipeService.save(recipe);
 
         // Redirects the page to our designated html page
         return "viewRecipe";
     }
+
 }
