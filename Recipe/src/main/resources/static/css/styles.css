@@ -146,3 +146,7 @@ label {
   padding-top: 17px;
   padding-left: 17px;
 }
+
+table {
+  border: 1px solid black;
+}

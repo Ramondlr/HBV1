@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +24,8 @@
         <input class = "textarea_newRecipe" type="text" th:field="*{recipeTag}" id="recipeTag" placeholder="Tag your recipe">
         <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag"></span>
 
+        <label for="image_uploads">Choose images to upload</label>
+        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
         <!--
         <label for="image">Image</label>
         <input class = "textarea_newRecipe" type="file" th:field="*{image}" id="image">
