@@ -146,3 +146,10 @@ label {
   padding-top: 17px;
   padding-left: 17px;
 }
+
+.img {
+  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
