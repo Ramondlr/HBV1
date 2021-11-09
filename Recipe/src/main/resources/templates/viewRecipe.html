@@ -18,6 +18,8 @@
         <label>Tag</label>
         <p th:text="${recipe.recipeTag}"></p>
     </div>
+    <p><a  th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></p>
+
     <p><a th:href="@{/editRecipe/{id}(id=${recipe.ID})}">Edit recipe</a></p>
     <p><a href="/userRecipe">Back to recipes</a></p>
 </div>

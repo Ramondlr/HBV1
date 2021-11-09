@@ -19,8 +19,7 @@
             <tr>
                 <th>Title</th>
                 <th>Tag</th>
-                <th>Delete</th>
-                <th>View</th>
+
             </tr>
             </thead>
             <tbody>
@@ -28,7 +27,7 @@
                                                             where recipe exists in a repo of recipes -->
                 <td th:text="${recipe.recipeTitle}"></td>
                 <td th:text="${recipe.recipeTag}"></td>
-                <td><a th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></td>
+
                 <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
 
             </tr>
