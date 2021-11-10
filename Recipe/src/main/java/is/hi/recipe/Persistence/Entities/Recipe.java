@@ -17,7 +17,7 @@ public class Recipe {
     private String recipeTitle;
     private String recipeText;
     private String recipeTag;
-    private static Image image;
+    private byte[] recipeImage;
 
 
     // Many recipes for a user
@@ -32,10 +32,11 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String title, String text, String tag) {
+    public Recipe(String title, String text, String tag, byte[] recipeImage) {
         this.recipeTitle = title;
         this.recipeText = text;
         this.recipeTag = tag;
+        this.recipeImage = recipeImage;
     }
 
     public long getUserID() {
@@ -78,11 +79,11 @@ public class Recipe {
         this.recipeTag = recipeTag;
     }
 
-    public static Image getImage() {
-        return image;
+    public byte[] getRecipeImage() {
+        return recipeImage;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setRecipeImage(byte[] image) {
+        this.recipeImage = recipeImage;
     }
 }
