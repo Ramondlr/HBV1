@@ -40,6 +40,13 @@ public class UserController {
 
         User exists = userService.findByUsername(user.getUsername());
 
+        // Koma með almennilegt villuskilaboð, seinna meir.
+        // Skoðar ef notandanafn er núþegar á skrá þegar nýr notandi er að reyna að sign up
+        if(exists != null){
+            return "redirect:/signup";
+        }
+        userService.save(user);
+
         // TODO búa til if condition til að checka ef exists != null þ.e.a.s. ef það er núþegar til user með sama
         //  username að meðhöndla þá villu.
 
