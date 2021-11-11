@@ -73,9 +73,8 @@ public class UserController {
             // Og það þarf að vera til staðar til að geta unnið með nafn notandans inná RecipeController
             session.setAttribute("LoggedInUser", exists);
             // Þessi kóði er óþarfi til að setja upp í model nafn notandans en ég (Ramon) vil halda í hann í bili
-            // ef við viljum nota það seinna meir.  Ef hann er ekki kommentaður þá koma engin villa og ekki heldur ef
-            // hann er kommentaður, basicly gerir ekki neitt...held ég..
-            // model.addAttribute("LoggedInUser", exists)
+            // ef við viljum nota það seinna meir.
+            // model.addAttribute("LoggedInUser", exists);
             return "redirect:/userRecipe";
         }
         return "redirect:/userRecipe";
