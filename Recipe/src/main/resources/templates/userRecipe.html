@@ -8,11 +8,12 @@
 
 </head>
 <body>
-
-<div>
-    <h2>Velkomin/n: </h2>
-    <p th:text="${LoggedInUser.username}"></p>
-</div>
+<header>
+    <div>
+        <h2>Velkomin/n: </h2>
+        <p th:text="${LoggedInUser.username}"></p>
+    </div>
+</header>
 
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
                                 our model.attribute() metohd in our RecipeController inside our
