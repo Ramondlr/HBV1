@@ -92,6 +92,17 @@ public class UserController {
         return "redirect:/";
     }
  */
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutGET(HttpSession session){
+        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        if(sessionUser != null){
+            session.removeAttribute("LoggedInUser");
+            // Ef það er ekki redirect:/ á undan 'logout' þá kemur (type=Internal Server Error, status=500)
+            return "redirect:/logout";
+        }
+        return "redirect:/";
+    }
+
 
     // TODO logoutGET method
 
