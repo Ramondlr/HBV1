@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 
-// prufa
+
 @Controller
 public class UserController {
 
@@ -87,7 +87,7 @@ public class UserController {
     }
 
     // Þessi aðferð er óþarfi til að geta séð hver notandinn er sem er skráður inn.
-/*
+    // Ef þú ferð inná '/loggedin' án þess að skrá þig inn fyrst þá redirect-ar síðan þig aftur á heimasíðu.
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
     public String loggedinGET(HttpSession session, Model model){
         User sessionUser = (User) session.getAttribute("LoggedInUser");
@@ -97,7 +97,7 @@ public class UserController {
         }
         return "redirect:/";
     }
- */
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutGET(HttpSession session){
         User sessionUser = (User) session.getAttribute("LoggedInUser");
