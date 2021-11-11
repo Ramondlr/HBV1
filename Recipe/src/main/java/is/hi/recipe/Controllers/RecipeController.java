@@ -33,8 +33,8 @@ public class RecipeController {
         return "home";
     }
 
-    @RequestMapping("/userRecipe")
-    public String userRecipeController(Model model){
+    @RequestMapping(value = "/userRecipe", method = RequestMethod.GET)
+    public String userRecipeGET(Model model){
         //Call a method in a service class
         List<Recipe> allRecipes = recipeService.findAll();
         //Add some data to the model
