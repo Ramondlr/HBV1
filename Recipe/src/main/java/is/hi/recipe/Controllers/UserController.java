@@ -66,6 +66,12 @@ public class UserController {
         if(result.hasErrors()){
             return "login";
         }
+        // Ef notandi er ekki til vísar þessi aðferð notandann á 'signup.html' skjalið þar sem notandanafn og lykilorð
+        // er núþegar í reitunum sínum (btw, ekki gott að venja sig á svona þar sem það er auðvelt fyrir hakkara að
+        // grípa og ná í notandanafn og lykilorð svona, en þufum ekki að pæla í því hér).
+        if (userService.findByUsername(user.getUsername()) == null) {
+            return "signup";
+        }
         User exists = userService.login(user);
 
         if(exists != null){
