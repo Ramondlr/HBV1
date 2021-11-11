@@ -109,8 +109,4 @@ public class UserController {
         return "redirect:/";
     }
 
-
-    // TODO logoutGET method
-
-    // TODO logoutPOST method
 }
