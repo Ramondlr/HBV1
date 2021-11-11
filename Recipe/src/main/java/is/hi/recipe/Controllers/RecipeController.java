@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -34,11 +35,14 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/userRecipe", method = RequestMethod.GET)
-    public String userRecipeGET(Model model){
+    public String userRecipeGET(Model model, HttpSession session){
         //Call a method in a service class
         List<Recipe> allRecipes = recipeService.findAll();
+        User sessionUser = (User) session.getAttribute("LoggedInUser");
+
         //Add some data to the model
         model.addAttribute("recipes", allRecipes);
+        model.addAttribute("LoggedInUser", sessionUser);
 
         return "userRecipe";
     }

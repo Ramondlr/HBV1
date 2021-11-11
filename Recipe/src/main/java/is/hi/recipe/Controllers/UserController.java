@@ -67,14 +67,21 @@ public class UserController {
             return "login";
         }
         User exists = userService.login(user);
+
         if(exists != null){
+            // Þessi kóði þarf að vera til að geta séð notanda sem er skráður inn, inná userRecipe.html
+            // Og það þarf að vera til staðar til að geta unnið með nafn notandans inná RecipeController
             session.setAttribute("LoggedInUser", exists);
-            model.addAttribute("LoggedInUser", exists);
+            // Þessi kóði er óþarfi til að setja upp í model nafn notandans en vill halda í hann í bili
+            // ef við viljum nota það seinna meir.
+            // model.addAttribute("LoggedInUser", exists)
             return "redirect:/userRecipe";
         }
         return "redirect:/userRecipe";
     }
 
+    // Þessi aðferð er óþarfi til að geta séð hver notandinn er sem er skráður inn.
+/*
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
     public String loggedinGET(HttpSession session, Model model){
         User sessionUser = (User) session.getAttribute("LoggedInUser");
@@ -84,6 +91,7 @@ public class UserController {
         }
         return "redirect:/";
     }
+ */
 
     // TODO logoutGET method
 
