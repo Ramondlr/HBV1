@@ -22,7 +22,6 @@ public class RecipeServiceImplementation implements RecipeService {
     @Override
     public Recipe findByRecipeTitle(String recipeTitle) {
         // Þurfum að lagfæra þetta seinna meir
-
         return (Recipe) recipeRepository.findByRecipeTitle(recipeTitle);
     }
 
