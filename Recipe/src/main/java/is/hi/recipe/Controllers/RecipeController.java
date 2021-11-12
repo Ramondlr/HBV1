@@ -65,11 +65,11 @@ public class RecipeController {
             return "newRecipe";
         }
 
-        // Hér náum við í info currentlyLoggedInUser
+        // Hér náum við í info um currentlyLoggedInUser
         User sessionUser = (User) session.getAttribute("LoggedInUser");
-        // Stillum hér userID undir Recipes sem currentlyLoggedInUser hefur
+        // Stillum hér userID undir Recipes, gildið sem currentlyLoggedInUser ID hefur
         recipe.setUserID(sessionUser.getID());
-        // Síðan vistum við nýju uppskriftina sem hefur skráð hjá sér currentlyLoggedInUser undir userID.
+        // Síðan vistum við nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
         recipeService.save((recipe));
         // Redirects the page to our home page
         return "redirect:/userRecipe";
@@ -87,18 +87,15 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
-    public String getRecipe(@PathVariable("id") long id, Model model, HttpSession session){
+    public String getRecipe(@PathVariable("id") long id, Model model){
 
-        // recipeService.findByUserID(sessionUser.getID()) --> vísar í minnissvæði en ekki gildi, myndi þetta samt virka? er ekki viss.
-        // User sessionUser = (User) session.getAttribute("LoggedInUser");
-        // System.out.println("Recipe id: " + id + "; User id: ");
         model.addAttribute("recipe", recipeService.findByID(id));
         return "viewRecipe";
     }
 
     // Birtir uppskrift til að breyta
     @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.GET)
-    public String editRecipeGET(@PathVariable("id") long id, Model model, Recipe recipe){
+    public String editRecipeGET(@PathVariable("id") long id, Model model){
         model.addAttribute("recipes", recipeService.findByID(id));
         return "editRecipe";
     }
