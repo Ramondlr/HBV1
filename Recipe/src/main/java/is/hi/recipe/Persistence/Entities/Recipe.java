@@ -83,7 +83,7 @@ public class Recipe {
         return recipeImage;
     }
 
-    public void setRecipeImage(byte[] image) {
+    public void setRecipeImage(byte[] recipeImage) {
         this.recipeImage = recipeImage;
     }
 }

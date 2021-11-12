@@ -33,10 +33,12 @@
             <tbody>
             <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
                                                             where recipe exists in a repo of recipes -->
-                <td th:text="${recipe.recipeTitle}"></td>
-                <td th:text="${recipe.recipeTag}"></td>
+                <div th:if="${recipe.userID} == ${LoggedInUser.ID}">
+                    <td th:text="${recipe.recipeTitle}"></td>
+                    <td th:text="${recipe.recipeTag}"></td>
 
-                <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
+                    <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
+                </div>
 
             </tr>
             </tbody>

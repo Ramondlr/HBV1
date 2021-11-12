@@ -39,9 +39,13 @@ public class RecipeController {
         //Call a method in a service class
         List<Recipe> allRecipes = recipeService.findAll();
         User sessionUser = (User) session.getAttribute("LoggedInUser");
+        // sessionUser.getID() --> svona náum við í userID
 
         //Add some data to the model
         model.addAttribute("recipes", allRecipes);
+        // Sjáum hér að sessionUser sýnir okkur ID hjá currentlyLoggedInUser, notum það til að sýna uppskriftir sem sá
+        // notandi á og tengja saman nýjar uppskriftir við
+        // System.out.println("'useRecipeGET'-Session user ID: " + sessionUser.getID());
         model.addAttribute("LoggedInUser", sessionUser);
 
         return "userRecipe";
@@ -56,10 +60,16 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.POST)
-    public String newRecipePOST(Recipe recipe, BindingResult result){
+    public String newRecipePOST(Recipe recipe, BindingResult result, HttpSession session){
         if(result.hasErrors()){
             return "newRecipe";
         }
+
+        // Hér náum við í info currentlyLoggedInUser
+        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        // Stillum hér userID undir Recipes sem currentlyLoggedInUser hefur
+        recipe.setUserID(sessionUser.getID());
+        // Síðan vistum við nýju uppskriftina sem hefur skráð hjá sér currentlyLoggedInUser undir userID.
         recipeService.save((recipe));
         // Redirects the page to our home page
         return "redirect:/userRecipe";
@@ -77,7 +87,11 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
-    public String getRecipe(@PathVariable("id") long id, Model model){
+    public String getRecipe(@PathVariable("id") long id, Model model, HttpSession session){
+
+        // recipeService.findByUserID(sessionUser.getID()) --> vísar í minnissvæði en ekki gildi, myndi þetta samt virka? er ekki viss.
+        // User sessionUser = (User) session.getAttribute("LoggedInUser");
+        // System.out.println("Recipe id: " + id + "; User id: ");
         model.addAttribute("recipe", recipeService.findByID(id));
         return "viewRecipe";
     }
@@ -90,7 +104,11 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
-    public String editRecipePOST(Recipe recipe){
+    public String editRecipePOST(Recipe recipe, HttpSession session){
+        // Hér náum við í info currentlyLoggedInUser
+        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        // Stillum hér userID undir Recipes sem currentlyLoggedInUser hefur
+        recipe.setUserID(sessionUser.getID());
         recipeService.save(recipe);
 
         // Redirects the page to our designated html page
