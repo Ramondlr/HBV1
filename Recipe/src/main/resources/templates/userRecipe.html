@@ -23,11 +23,11 @@
     <div th:case="*">
         <h2>Recipes</h2>
         <table style="text-align:center" >
+
             <thead>
             <tr>
                 <th>Title</th>
                 <th>Tag</th>
-
             </tr>
             </thead>
             <tbody>
@@ -36,13 +36,13 @@
                 <div th:if="${recipe.userID} == ${LoggedInUser.ID}">
                     <td th:text="${recipe.recipeTitle}"></td>
                     <td th:text="${recipe.recipeTag}"></td>
-
                     <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
                 </div>
 
             </tr>
             </tbody>
         </table>
+
     </div>
     <p><a href="/newRecipe">Add a new recipe</a></p>
     <p><a href="/logout">logout</a></p>
