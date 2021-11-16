@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -60,7 +57,7 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.POST)
-    public String newRecipePOST(Recipe recipe, BindingResult result, HttpSession session){
+    public String newRecipePOST(Recipe recipe, BindingResult result, HttpSession session, @RequestParam("image_uploads") byte[] imageFile){
         if(result.hasErrors()){
             return "newRecipe";
         }
@@ -70,6 +67,7 @@ public class RecipeController {
         // Stillum hér userID undir Recipes, gildið sem currentlyLoggedInUser ID hefur
         recipe.setUserID(sessionUser.getID());
         // Síðan vistum við nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
+        recipe.setRecipeImage(imageFile);
         recipeService.save((recipe));
         // Redirects the page to our home page
         return "redirect:/userRecipe";
