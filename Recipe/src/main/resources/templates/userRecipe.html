@@ -8,12 +8,14 @@
 
 </head>
 <body>
+
 <header>
     <div>
         <h2>Velkomin/n: </h2>
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
     </div>
+    <p><a href="/logout">logout</a></p>
 </header>
 
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
@@ -41,12 +43,11 @@
 
             </tr>
             </tbody>
-        </table>
+            </table>
 
     </div>
     <p><a href="/newRecipe">Add a new recipe</a></p>
-    <p><a href="/logout">logout</a></p>
-</div>
+    </div>
 
 </body>
 </html>
