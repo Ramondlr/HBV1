@@ -147,11 +147,27 @@ label {
   padding-left: 17px;
 }
 
-.img {
+.img1 {
+  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 450px;
+}
+
+.img2 {
   background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 300px;
+}
+
+.img3 {
+  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 400px;
 }
 
