@@ -21,6 +21,13 @@ h2.signup-h2{
   padding-right: 20px;
 }
 
+h2.home-h2{
+  font-size: 60px;
+  text-align: left;
+  padding-right: 40px;
+  justify-content: center;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   color: #4A4A4A;
@@ -170,5 +177,21 @@ label {
   background-size: cover;
   background-repeat: no-repeat;
   padding: 400px;
+}
+
+.img4 {
+  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 400px;
+}
+
+.img5 {
+  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 300px;
 }
 
