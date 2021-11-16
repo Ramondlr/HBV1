@@ -25,7 +25,7 @@ body {
   font-family: 'Lato', sans-serif;
   color: #4A4A4A;
   display: flex;
-  justify-content: center;
+  justify-content: flex-direction: column; justify-content: center; align-items: center;;
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
