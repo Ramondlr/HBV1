@@ -7,15 +7,17 @@
     <title>Recipes</title>
 
 </head>
-<body>
+<body class="userRecipe">
 
-<header>
-    <div>
+<header class="userRecipe_header">
+    <div class="welcome_box1">
         <h2>Velkomin/n: </h2>
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
     </div>
-    <p><a href="/logout">logout</a></p>
+    <div class="welcome_div_box2">
+        <p> <a href="/logout">logout</a></p>
+    </div>
 </header>
 
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in

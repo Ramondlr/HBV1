@@ -6,31 +6,48 @@ a {
 }
 
 h2 {
-    font-size: 20px;
-    font-family: sans; color:  #47AB11;
+  font-size: 20px;
+  font-family: sans, serif; color:  #47AB11;
 }
 
 h2.login-h2{
   font-size: 50px;
   text-align: left;
   -webkit-text-stroke: 1px black;
-  font-family: sans; color:  #47AB11;
+
 }
+
+header.userRecipe_header{
+  display: flex;
+
+}
+
+.welcome_box1 {
+  flex: 1;
+  justify-items: flex-start;
+}
+
+.welcome_box1{
+  flex: 2;
+  justify-items: flex-end;
+}
+
+
 
 h2.signup-h2{
   font-size: 50px;
   text-align: left;
   -webkit-text-stroke: 1px black;
-  font-family: sans; color:  #47AB11;
+
 }
 
 h2.home{
   font-size: 50px;
   -webkit-text-stroke: 1px black;
-  font-family: sans; color:  #47AB11;
+
 }
 
-body {
+body.body {
   font-family: 'Lato', sans-serif;
   color: #4A4A4A;
   display: flex;
@@ -41,6 +58,16 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
+}
+
+body.userRecipe{
+
+}
+
+header > div {
+  display: flex;
+  align-items: baseline;
+  justify-items: flex-start;
 }
 
 form {
@@ -80,6 +107,7 @@ form input {
   color: #4A4A4A;
   text-indent: 40px;
 }
+
 form .btn {
   outline: none;
   border: none;
