@@ -7,11 +7,12 @@
     <title>Recipes</title>
 
 </head>
+<div class="img3">
 <body class="userRecipe">
 
 <header class="userRecipe_header">
     <div class="welcome_box1">
-        <h2>Velkomin/n: </h2>
+        <h2 class ="h2_welcome_name">Welcome,  </h2>
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
     </div>
@@ -23,23 +24,24 @@
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
                                 our model.attribute() metohd in our RecipeController inside our
                                 homePage method.-->
-    <h2 th:case="null">No recipes yet!</h2>
+    <h2  th:case="null">No recipes yet!</h2>
     <div th:case="*">
-        <h2>Recipes</h2>
-        <table style="text-align:center" >
+        <h2 class="h2_userRecipe">Recipes</h2>
+        <table >
 
             <thead>
             <tr>
                 <th>Title</th>
                 <th>Tag</th>
+                <th> </th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
                                                             where recipe exists in a repo of recipes -->
                 <div th:if="${recipe.userID} == ${LoggedInUser.ID}">
-                    <td th:text="${recipe.recipeTitle}"></td>
-                    <td th:text="${recipe.recipeTag}"></td>
+                    <td class="td" th:text="${recipe.recipeTitle}"></td>
+                    <td class="td" th:text="${recipe.recipeTag}"></td>
                     <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
                 </div>
 
