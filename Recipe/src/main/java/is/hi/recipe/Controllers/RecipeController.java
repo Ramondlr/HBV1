@@ -63,7 +63,8 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.POST)
-    public String newRecipePOST(Recipe recipe, @NotNull BindingResult result, Model model, HttpSession session, @RequestParam(name = "image", required = false) MultipartFile multipartFile) throws IOException {
+    public String newRecipePOST(Recipe recipe, @NotNull BindingResult result, Model model, HttpSession session,
+                                @RequestParam(name = "image", required = false) MultipartFile multipartFile) throws IOException {
         if(result.hasErrors()){
             return "newRecipe";
         }
@@ -73,14 +74,13 @@ public class RecipeController {
         recipe.setRecipeImage(fileName);
 
         // Hér náum við í info um currentlyLoggedInUser
-        User sessionUser = (User) session;
+        User sessionUser = (User) session.getAttribute("LoggedInUser");
         // Stillum hér userID undir Recipes, gildið sem currentlyLoggedInUser ID hefur
         recipe.setUserID(sessionUser.getID());
         // Síðan vistum við nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
 
-
         Recipe savedRecipe = recipeService.save((recipe));
-        String uploadDir = "upload/recipeImage/" + savedRecipe.getID();
+        String uploadDir = "src/main/resources/static/upload/recipeImage/" + savedRecipe.getID(); // savedRecipe.getUserID() + savedRecipe.getID();
 
         try {
             FileSaver.saveFile(uploadDir, fileName, multipartFile);
@@ -105,6 +105,8 @@ public class RecipeController {
 
     @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
     public String getRecipe(@PathVariable("id") long id, Model model){
+
+        // model.addAttribute("recipeImage",recipeService.findByID(id).getRecipeImagePath());
 
         model.addAttribute("recipe", recipeService.findByID(id));
         return "viewRecipe";

@@ -92,6 +92,6 @@ public class Recipe {
 
     @Transient
     public String getRecipeImagePath() {
-        return "/recipeImage/" + this.ID + "/" + this.recipeImage;
+        return "/upload/recipeImage/" + this.ID + "/" + this.recipeImage;
     }
 }
