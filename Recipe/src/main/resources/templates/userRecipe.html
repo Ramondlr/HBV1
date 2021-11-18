@@ -11,7 +11,7 @@
 
 <header class="userRecipe_header">
     <div class="welcome_box1">
-        <h2>Velkomin/n: </h2>
+        <h2>Welcome </h2>
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
     </div>
@@ -23,10 +23,10 @@
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
                                 our model.attribute() metohd in our RecipeController inside our
                                 homePage method.-->
-    <h2 th:case="null">No recipes yet!</h2>
+    <h2  th:case="null">No recipes yet!</h2>
     <div th:case="*">
-        <h2>Recipes</h2>
-        <table style="text-align:center" >
+        <h2 class="h2_userRecipe">Recipes</h2>
+        <table >
 
             <thead>
             <tr>
