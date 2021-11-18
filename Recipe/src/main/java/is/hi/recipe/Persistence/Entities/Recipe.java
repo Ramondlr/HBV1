@@ -1,6 +1,8 @@
 package is.hi.recipe.Persistence.Entities;
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,7 +19,8 @@ public class Recipe {
     private String recipeTitle;
     private String recipeText;
     private String recipeTag;
-    private byte[] recipeImage;
+    @Column(nullable = true, length = 64)
+    private String recipeImage;
 
 
     // Many recipes for a user
@@ -32,7 +35,7 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String title, String text, String tag, byte[] recipeImage) {
+    public Recipe(String title, String text, String tag, String recipeImage) {
         this.recipeTitle = title;
         this.recipeText = text;
         this.recipeTag = tag;
@@ -79,11 +82,16 @@ public class Recipe {
         this.recipeTag = recipeTag;
     }
 
-    public byte[] getRecipeImage() {
+    public String getRecipeImage() {
         return recipeImage;
     }
 
-    public void setRecipeImage(byte[] recipeImage) {
+    public void setRecipeImage(String recipeImage) {
         this.recipeImage = recipeImage;
+    }
+
+    @Transient
+    public String getRecipeImagePath() {
+        return "/upload/recipeImage/" + this.ID + "/" + this.recipeImage;
     }
 }
