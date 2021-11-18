@@ -6,15 +6,13 @@ a {
 }
 
 h2 {
-    font-size: 20px;
+  font-size: 20px;
+  font-family: sans, serif; color:  #47AB11;
 }
 
 h2.login-h2{
-  font-size: 60px;
+  font-size: 50px;
   text-align: left;
-<<<<<<< Updated upstream
-  padding-right: 20px;
-=======
   -webkit-text-stroke: 1px black;
 
 }
@@ -30,18 +28,28 @@ header.userRecipe_header{
 }
 
 .welcome_box1{
+
+  justify-items: flex-end;
   flex: 1;
   justify-items: flex-end;
->>>>>>> Stashed changes
 }
+
+
 
 h2.signup-h2{
-  font-size: 60px;
+  font-size: 50px;
   text-align: left;
-  padding-right: 20px;
+  -webkit-text-stroke: 1px black;
+
 }
 
-body {
+h2.home{
+  font-size: 50px;
+  -webkit-text-stroke: 1px black;
+
+}
+
+body.body {
   font-family: 'Lato', sans-serif;
   color: #4A4A4A;
   display: flex;
@@ -54,6 +62,16 @@ body {
   padding: 0;
 }
 
+body.userRecipe{
+
+}
+
+header > div {
+  display: flex;
+  align-items: baseline;
+  justify-items: flex-start;
+}
+
 form {
   width: 350px;
   position: relative;
@@ -64,20 +82,13 @@ form .form-field::before {
   left: 15px;
   top: 17px;
   color: #888888;
-  content: " ";
   display: block;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 form .form-field {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   margin-bottom: 1rem;
@@ -98,6 +109,7 @@ form input {
   color: #4A4A4A;
   text-indent: 40px;
 }
+
 form .btn {
   outline: none;
   border: none;
@@ -170,25 +182,36 @@ label {
 
 .img1 {
   background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 450px;
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 100%;
+  width: 100%;/* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  padding: 100px;
+  border-radius: 25px;
+  text-align: center;
 }
 
 .img2 {
   background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 300px;
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  padding:100px;
+  border-radius: 25px;
 }
 
 .img3 {
   background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 400px;
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  padding: 100px;
+  border-radius: 25px;
 }
 

@@ -7,12 +7,16 @@
     <title>Recipes</title>
 
 </head>
-<body>
-<header>
-    <div>
+<body class="userRecipe">
+
+<header class="userRecipe_header">
+    <div class="welcome_box1">
         <h2>Velkomin/n: </h2>
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
+    </div>
+    <div class="welcome_div_box2">
+        <p> <a href="/logout">logout</a></p>
     </div>
 </header>
 
@@ -41,12 +45,11 @@
 
             </tr>
             </tbody>
-        </table>
+            </table>
 
     </div>
     <p><a href="/newRecipe">Add a new recipe</a></p>
-    <p><a href="/logout">logout</a></p>
-</div>
+    </div>
 
 </body>
 </html>
