@@ -225,6 +225,6 @@ label {
   padding: 100px;
   border-radius: 25px;
   filter: blur(8px);
-  -webkit-filter: blur(8px);
+  #-webkit-filter: blur(8px);
 }
 
