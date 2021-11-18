@@ -18,7 +18,9 @@
         <label>Tag</label>
         <p th:text="${recipe.recipeTag}"></p>
         <label>Image</label>
-        <p th:text="${recipe.recipeImage}"></p>
+        <img th:src="@{recipe.recipeImage}" />
+
+        <!-- <p th:text="${recipe.recipeImage}"></p> -->
     </div>
     <p><a  th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></p>
 

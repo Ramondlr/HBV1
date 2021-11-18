@@ -1,17 +1,23 @@
 package is.hi.recipe.Controllers;
 
+import is.hi.recipe.FileSaver;
 import is.hi.recipe.Persistence.Entities.Recipe;
 import is.hi.recipe.Persistence.Entities.User;
 import is.hi.recipe.Services.RecipeService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.*;
+import java.nio.file.*;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class RecipeController {
@@ -57,18 +63,31 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.POST)
-    public String newRecipePOST(Recipe recipe, BindingResult result, HttpSession session, @RequestParam("image_uploads") byte[] imageFile){
+    public String newRecipePOST(Recipe recipe, @NotNull BindingResult result, Model model, HttpSession session, @RequestParam(name = "image", required = false) MultipartFile multipartFile) throws IOException {
         if(result.hasErrors()){
             return "newRecipe";
         }
 
+
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+        recipe.setRecipeImage(fileName);
+
         // Hér náum við í info um currentlyLoggedInUser
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        User sessionUser = (User) session;
         // Stillum hér userID undir Recipes, gildið sem currentlyLoggedInUser ID hefur
         recipe.setUserID(sessionUser.getID());
         // Síðan vistum við nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
-        recipe.setRecipeImage(imageFile);
-        recipeService.save((recipe));
+
+
+        Recipe savedRecipe = recipeService.save((recipe));
+        String uploadDir = "upload/recipeImage/" + savedRecipe.getID();
+
+        try {
+            FileSaver.saveFile(uploadDir, fileName, multipartFile);
+        } catch (IOException exception) {
+            return "/newRecipe";
+        }
+
         // Redirects the page to our home page
         return "redirect:/userRecipe";
     }

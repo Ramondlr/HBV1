@@ -8,7 +8,7 @@
 </head>
 <body>
 <div>
-    <form action="#" th:action="@{/newRecipe}" th:object="${recipe}" method="post">
+    <form action="#" th:action="@{/newRecipe}" th:object="${recipe}" method="post" enctype="multipart/form-data">
 
         <label for="recipeTitle">Name your recipe</label>
         <input type="text" th:field="*{recipeTitle}" id="recipeTitle" placeholder="Title">
@@ -24,8 +24,9 @@
         <input class = "textarea_newRecipe" type="text" th:field="*{recipeTag}" id="recipeTag" placeholder="Tag your recipe">
         <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag"></span>
 
-        <label for="image_uploads">Choose images to upload</label>
-        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+
+        <label for="fileImage">Choose image to upload</label>
+        <input type="file" th:field="*{recipeImage}" id="fileImage" name="image" accept="image/jpg, image/jpeg, image/png"/>
         <!--
         <label for="image">Image</label>
         <input class = "textarea_newRecipe" type="file" th:field="*{image}" id="image">
@@ -35,9 +36,12 @@
         <div class = "form-field2">
         <input class = "btn" type="submit" value="Add Recipe">
         </div>
-
-
     </form>
+    <form action="#" th:action="@{/newRecipe}" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="submit" value="Upload">
+    </form>
+
 </div>
 
 </body>
