@@ -249,7 +249,9 @@ label {
   background-size: cover; /* Resize the background image to cover the entire container */
   padding: 100px;
   border-radius: 25px;
+  /*
   #filter: blur(8px);
   #-webkit-filter: blur(8px);
+   */
 }
 
