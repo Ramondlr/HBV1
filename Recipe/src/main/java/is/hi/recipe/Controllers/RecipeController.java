@@ -105,9 +105,7 @@ public class RecipeController {
 
     @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
     public String getRecipe(@PathVariable("id") long id, Model model){
-
-        // model.addAttribute("recipeImage",recipeService.findByID(id).getRecipeImagePath());
-
+        
         model.addAttribute("recipe", recipeService.findByID(id));
         return "viewRecipe";
     }
