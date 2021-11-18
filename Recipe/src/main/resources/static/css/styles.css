@@ -240,3 +240,16 @@ label {
   border-radius: 25px;
 }
 
+.img4 {
+  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  padding: 100px;
+  border-radius: 25px;
+  filter: blur(8px);
+  #-webkit-filter: blur(8px);
+}
+
