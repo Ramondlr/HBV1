@@ -28,7 +28,9 @@ header.userRecipe_header{
 }
 
 .welcome_box1{
-  flex: 2;
+
+  justify-items: flex-end;
+  flex: 1;
   justify-items: flex-end;
 }
 
