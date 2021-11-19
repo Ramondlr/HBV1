@@ -67,7 +67,7 @@ h2.home{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   margin: 0;
   padding: 0;
 }
