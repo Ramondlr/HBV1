@@ -7,46 +7,51 @@
     <title>Recipes</title>
 
 </head>
-<body>
-<header>
-    <div>
-        <h2>Velkomin/n: </h2>
+<body style= "background-color:#BAF0F1;">
+<body class="userRecipe">
+
+<header class="userRecipe_header">
+    <div class="welcome_box1">
+        <h2 class ="h2_welcome_name">Welcome,  </h2>
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
+    </div>
+    <div class="welcome_div_box2">
+        <p> <a href="/logout">logout</a></p>
     </div>
 </header>
 
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
                                 our model.attribute() metohd in our RecipeController inside our
                                 homePage method.-->
-    <h2 th:case="null">No recipes yet!</h2>
+    <h2  th:case="null">No recipes yet!</h2>
     <div th:case="*">
-        <h2>Recipes</h2>
-        <table style="text-align:center" >
+        <h2 class="h2_userRecipe">Recipes</h2>
+        <table >
+
             <thead>
             <tr>
                 <th>Title</th>
                 <th>Tag</th>
-
+                <th> </th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
                                                             where recipe exists in a repo of recipes -->
                 <div th:if="${recipe.userID} == ${LoggedInUser.ID}">
-                    <td th:text="${recipe.recipeTitle}"></td>
-                    <td th:text="${recipe.recipeTag}"></td>
-
+                    <td class="td" th:text="${recipe.recipeTitle}"></td>
+                    <td class="td" th:text="${recipe.recipeTag}"></td>
                     <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
                 </div>
 
             </tr>
             </tbody>
-        </table>
+            </table>
+
     </div>
     <p><a href="/newRecipe">Add a new recipe</a></p>
-    <p><a href="/logout">logout</a></p>
-</div>
+    </div>
 
 </body>
 </html>

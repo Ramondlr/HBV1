@@ -6,7 +6,10 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <title>Add a new Recipe</title>
 </head>
-<body>
+<div class="img4">
+<body class="body">
+
+<h2 class="signup-h2">Add A New Recipe</h2>
 <div>
     <form action="#" th:action="@{/newRecipe}" th:object="${recipe}" method="post" enctype="multipart/form-data">
 
@@ -22,7 +25,7 @@
 
         <label for="recipeTag">Tag</label>
         <input class = "textarea_newRecipe" type="text" th:field="*{recipeTag}" id="recipeTag" placeholder="Tag your recipe">
-        <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag"></span>
+        <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag}"></span>
 
 
         <label for="fileImage">Choose image to upload</label>
@@ -46,6 +49,5 @@
     -->
 
 </div>
-
 </body>
 </html>
