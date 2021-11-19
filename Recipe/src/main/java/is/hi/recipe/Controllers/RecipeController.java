@@ -26,7 +26,7 @@ public class RecipeController {
     User user;
 
     @Autowired
-    public RecipeController(RecipeService recipeService){
+    public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
@@ -80,7 +80,7 @@ public class RecipeController {
         // Síðan vistum við nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
 
         Recipe savedRecipe = recipeService.save((recipe));
-        String uploadDir = "src/main/resources/static/upload/recipeImage/" + savedRecipe.getID(); // savedRecipe.getUserID() + savedRecipe.getID();
+        String uploadDir = "src/main/resources/static/upload/recipeImage/" + savedRecipe.getUserID() + "/" + savedRecipe.getID();
 
         try {
             FileSaver.saveFile(uploadDir, fileName, multipartFile);
@@ -106,8 +106,6 @@ public class RecipeController {
     @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
     public String getRecipe(@PathVariable("id") long id, Model model){
 
-        // model.addAttribute("recipeImage",recipeService.findByID(id).getRecipeImagePath());
-
         model.addAttribute("recipe", recipeService.findByID(id));
         return "viewRecipe";
     }
@@ -120,12 +118,29 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
-    public String editRecipePOST(Recipe recipe, HttpSession session){
+    public String editRecipePOST(Recipe recipe, HttpSession session, BindingResult result) {
+        if(result.hasErrors()){
+            return "editRecipe";
+        }
+
+        /*
+        // Fæ eins og er villur hér að multipartFile sé null, skoða
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+        recipe.setRecipeImage(fileName);
         // Hér náum við í info currentlyLoggedInUser
         User sessionUser = (User) session.getAttribute("LoggedInUser");
         // Stillum hér userID undir Recipes sem currentlyLoggedInUser hefur
         recipe.setUserID(sessionUser.getID());
-        recipeService.save(recipe);
+        Recipe savedRecipe = recipeService.save((recipe));
+        String uploadDir = "src/main/resources/static/upload/recipeImage/" + savedRecipe.getUserID() + "/" + savedRecipe.getID(); // savedRecipe.getUserID() + savedRecipe.getID();
+
+        try {
+            FileSaver.saveFile(uploadDir, fileName, multipartFile);
+        } catch (IOException exception) {
+            return "/editRecipe";
+        }
+         */
+        recipeService.save((recipe));
 
         // Redirects the page to our designated html page
         return "viewRecipe";
