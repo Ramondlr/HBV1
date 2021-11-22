@@ -135,6 +135,21 @@ form input {
   text-indent: 40px;
 }
 
+.input_chooseFile {
+  font-family: inherit;
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+  border-radius: 4px;
+  border: none;
+  display: block;
+  padding: 0.9rem 0.7rem;
+  box-shadow: none;
+  font-size: 17px;
+  color: #4A4A4A;
+  text-indent: 40px;
+}
+
 form .btn {
   outline: none;
   border: none;
@@ -204,6 +219,7 @@ label {
   padding-top: 17px;
   padding-left: 17px;
 }
+
 
 .img1 {
   background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
