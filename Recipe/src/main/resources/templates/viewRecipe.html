@@ -17,8 +17,7 @@
         <p th:text="${recipe.recipeText}"></p>
         <label>Tag</label>
         <p th:text="${recipe.recipeTag}"></p>
-        <label>Image</label>
-        <img th:src="@{${recipe.getRecipeImagePath}}" />
+        <img class = "viewImage" th:src="@{${recipe.getRecipeImagePath}}" />
 
         <!-- <p th:text="${recipe.recipeImage}"></p> -->
     </div>

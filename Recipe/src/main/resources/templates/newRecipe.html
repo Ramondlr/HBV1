@@ -25,7 +25,7 @@
 
         <label for="recipeTag">Tag</label>
         <input class = "textarea_newRecipe" type="text" th:field="*{recipeTag}" id="recipeTag" placeholder="Tag your recipe">
-        <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag"></span>
+        <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag}"></span>
 
 
         <label for="fileImage">Choose image to upload</label>

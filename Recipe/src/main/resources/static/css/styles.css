@@ -280,3 +280,8 @@ label {
   border-radius: 50px;
   text-align: center;
 }
+
+.viewImage {
+  max-width: 300px;
+  max-height: 300px;
+}
