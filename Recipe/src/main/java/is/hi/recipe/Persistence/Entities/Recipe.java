@@ -25,7 +25,7 @@ public class Recipe {
 
 
     // Many recipes for a user
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
 
