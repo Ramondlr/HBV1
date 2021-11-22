@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <link th:href=@{/css/styles.css} rel="stylesheet">
     <title>Recipes</title>
-
 </head>
-<body style= "background-color: #BAF0F1;">
-<body class="userRecipe">
+
 
 <header class="userRecipe_header">
     <div class="welcome_box1">
@@ -16,9 +15,16 @@
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
     </div>
-    <div class="welcome_div_box2">
+
+    <div class = "welcome_box2">
+        <input type="search" id="query" name="q" placeholder="Search...">
+    <button>Search</button>
+    </div>
+
+    <div class="welcome_box3">
         <p> <a href="/logout">logout</a></p>
     </div>
+
 </header>
 
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
