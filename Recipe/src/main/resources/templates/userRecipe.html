@@ -15,8 +15,13 @@
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
     </div>
-    <div class="welcome_div_box2">
+    <div class = "welcome_box2">
+        <input type="search" id="query" name="q" placeholder="Search...">
+    <button>Search</button>
+    </div>
+    <div class="welcome_box3">
         <p> <a href="/logout">logout</a></p>
+
     </div>
 </header>
 
