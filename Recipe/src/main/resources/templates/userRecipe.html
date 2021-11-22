@@ -42,6 +42,7 @@
                 <th> </th>
             </tr>
             </thead>
+
             <tbody>
             <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
                                                             where recipe exists in a repo of recipes -->
@@ -53,7 +54,7 @@
 
             </tr>
             </tbody>
-            </table>
+        </table>
 
     </div>
     <p><a href="/newRecipe">Add a new recipe</a></p>
