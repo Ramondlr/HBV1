@@ -6,6 +6,9 @@ import is.hi.recipe.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +45,13 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public void delete(Recipe recipe) {
+        String fileToDeletePath = "src/main/resources/static/" + recipe.getRecipeImagePath();
+        System.out.println(fileToDeletePath);
+        try {
+            Files.delete(Path.of(fileToDeletePath));
+        } catch (IOException e) {
+            System.out.println("error deleting recipeImage");
+        }
         recipeRepository.delete(recipe);
     }
 
