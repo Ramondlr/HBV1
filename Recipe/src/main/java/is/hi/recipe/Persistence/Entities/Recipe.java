@@ -23,13 +23,14 @@ public class Recipe {
     private String recipeImage;
 
 
+
     // Many recipes for a user
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
 
     // Gauti er með milliveg (rental) fyrir user or book (hjá okkur user og recipe) ættum við að gera svipað?
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Recipe recipe;
 
     public Recipe() {

@@ -117,10 +117,12 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
-    public String editRecipePOST(Recipe recipe, HttpSession session, BindingResult result) {
+    public String editRecipePOST(Recipe recipe, HttpSession session, @NotNull BindingResult result,
+                                 @RequestParam(name = "image", required = false) MultipartFile multipartFile) throws IOException {
         if(result.hasErrors()){
             return "editRecipe";
         }
+
 
         /*
         // Fæ eins og er villur hér að multipartFile sé null, skoða
