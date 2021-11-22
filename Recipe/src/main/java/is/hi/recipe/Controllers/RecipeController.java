@@ -38,7 +38,7 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/userRecipe", method = RequestMethod.GET)
-    public String userRecipeGET(Model model, HttpSession session){
+    public String userRecipeGET(@NotNull Model model, @NotNull HttpSession session){
         //Call a method in a service class
         List<Recipe> allRecipes = recipeService.findAll();
         User sessionUser = (User) session.getAttribute("LoggedInUser");
@@ -104,42 +104,43 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
-    public String getRecipe(@PathVariable("id") long id, Model model){
+    public String getRecipe(@PathVariable("id") long id, @NotNull Model model){
         model.addAttribute("recipe", recipeService.findByID(id));
         return "viewRecipe";
     }
 
     // Birtir uppskrift til að breyta
     @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.GET)
-    public String editRecipeGET(@PathVariable("id") long id, Model model){
+    public String editRecipeGET(@PathVariable("id") long id, @NotNull Model model){
         model.addAttribute("recipes", recipeService.findByID(id));
         return "editRecipe";
     }
 
     @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
-    public String editRecipePOST(Recipe recipe, HttpSession session, BindingResult result) {
+    public String editRecipePOST(Recipe recipe, HttpSession session, @NotNull BindingResult result,
+                                 @RequestParam(name = "image", required = false) MultipartFile multipartFile) throws IOException {
         if(result.hasErrors()){
             return "editRecipe";
         }
 
-        /*
-        // Fæ eins og er villur hér að multipartFile sé null, skoða
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         recipe.setRecipeImage(fileName);
-        // Hér náum við í info currentlyLoggedInUser
+
+        // Hér náum við í info um currentlyLoggedInUser
         User sessionUser = (User) session.getAttribute("LoggedInUser");
-        // Stillum hér userID undir Recipes sem currentlyLoggedInUser hefur
+        // Stillum hér userID undir Recipes, gildið sem currentlyLoggedInUser ID hefur
         recipe.setUserID(sessionUser.getID());
+        // Síðan vistum við nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
+
+
         Recipe savedRecipe = recipeService.save((recipe));
-        String uploadDir = "src/main/resources/static/upload/recipeImage/" + savedRecipe.getUserID() + "/" + savedRecipe.getID(); // savedRecipe.getUserID() + savedRecipe.getID();
+        String uploadDir = "src/main/resources/static/upload/recipeImage/" + savedRecipe.getUserID() + "/" + savedRecipe.getID();
 
         try {
             FileSaver.saveFile(uploadDir, fileName, multipartFile);
         } catch (IOException exception) {
-            return "/editRecipe";
+            return "/viewRecipe";
         }
-         */
-        recipeService.save((recipe));
 
         // Redirects the page to our designated html page
         return "viewRecipe";
