@@ -11,13 +11,25 @@
 <div>
     <!-- th=thymeleaf -> th:each == for each loop where recipe exists in a repo of recipes -->
     <div class="recipe">
-        <label>Title</label>
-        <p th:text="${recipe.recipeTitle}"></p>
-        <label>Recipe</label>
-        <p th:text="${recipe.recipeText}"></p>
-        <label>Tag</label>
-        <p th:text="${recipe.recipeTag}"></p>
-        <img class = "viewImage" th:src="@{${recipe.getRecipeImagePath}}" />
+
+        <div th:if="${recipe.recipeTitle != ''}">
+            <label>Title</label>
+            <p th:text="${recipe.recipeTitle}"></p>
+        </div>
+
+        <div th:if="${recipe.recipeText != ''}">
+            <label>Recipe</label>
+            <p th:text="${recipe.recipeText}"></p>
+        </div>
+
+        <div th:if="${recipe.recipeTag != ''}">
+            <label>Tag</label>
+            <p th:text="${recipe.recipeTag}"></p>
+        </div>
+
+        <div th:if="${recipe.recipeImage != ''}">
+            <img class = "viewImage" th:src="@{${recipe.getRecipeImagePath}}" />
+        </div>
 
         <!-- <p th:text="${recipe.recipeImage}"></p> -->
     </div>
