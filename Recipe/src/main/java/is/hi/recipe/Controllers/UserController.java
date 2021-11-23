@@ -17,6 +17,10 @@ public class UserController {
 
     UserService userService;
 
+    /**
+     *
+     * @param userService
+     */
     @Autowired
     public UserController(UserService userService){
         this.userService = userService;

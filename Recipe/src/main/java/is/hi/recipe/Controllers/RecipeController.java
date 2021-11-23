@@ -78,6 +78,10 @@ public class RecipeController {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         recipe.setRecipeImage(fileName);
 
+        if ((recipe.getRecipeTitle().isEmpty()) && (recipe.getRecipeText().isEmpty())
+                && (recipe.getRecipeTag().isEmpty()) && (recipe.getRecipeImage().isEmpty()))
+            return "redirect:/userRecipe";
+
         // Hér náum við í info um currentlyLoggedInUser
         User sessionUser = (User) session.getAttribute("LoggedInUser");
         // Stillum hér userID undir Recipes, gildið sem currentlyLoggedInUser ID hefur
