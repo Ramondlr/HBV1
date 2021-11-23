@@ -122,22 +122,25 @@ public class RecipeController {
         if(result.hasErrors()){
             return "editRecipe";
         }
-
-        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-        recipe.setRecipeImage(fileName);
-
-        // Hér náum við í info um currentlyLoggedInUser
+        // Náum í info um currentlyLoggedInUser
         User sessionUser = (User) session.getAttribute("LoggedInUser");
-        // Stillum hér userID undir Recipes, gildið sem currentlyLoggedInUser ID hefur
+        // Stillum userID undir Recipes, gildið sem currentlyLoggedInUser ID hefur
         recipe.setUserID(sessionUser.getID());
-        // Síðan vistum við nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
 
+        String newImage = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+        recipe.setRecipeImage((recipeService.findByID(recipe.getID())).getRecipeImage());
 
+        if(newImage != "") {
+            recipeService.deleteRecipeImage(recipe);
+            recipe.setRecipeImage(newImage);
+        }
+
+        // Vistum nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
         Recipe savedRecipe = recipeService.save((recipe));
         String uploadDir = "src/main/resources/static/upload/recipeImage/" + savedRecipe.getUserID() + "/" + savedRecipe.getID();
 
         try {
-            FileSaver.saveFile(uploadDir, fileName, multipartFile);
+            FileSaver.saveFile(uploadDir, newImage, multipartFile);
         } catch (IOException exception) {
             return "/viewRecipe";
         }

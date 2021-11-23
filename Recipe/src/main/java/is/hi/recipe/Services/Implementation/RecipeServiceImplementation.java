@@ -45,15 +45,19 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public void delete(Recipe recipe) {
+        deleteRecipeImage(recipe);
+        recipeRepository.delete(recipe);
+    }
+
+    @Override
+    public void deleteRecipeImage(Recipe recipe) {
         String fileToDeletePath = "src/main/resources/static/" + recipe.getRecipeImagePath();
         try {
             Files.delete(Path.of(fileToDeletePath));
         } catch (IOException e) {
             System.out.println("error deleting recipeImage");
         }
-        recipeRepository.delete(recipe);
     }
-
     // TODO editRecipe
 
 }
