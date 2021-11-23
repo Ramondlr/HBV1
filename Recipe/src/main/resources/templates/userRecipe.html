@@ -34,7 +34,6 @@
     <div th:case="*">
         <h2 class="h2_userRecipe">Recipes</h2>
         <table >
-
             <thead>
             <tr>
                 <th>Title</th>
@@ -42,7 +41,6 @@
                 <th> </th>
             </tr>
             </thead>
-
             <tbody>
             <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
                                                             where recipe exists in a repo of recipes -->
@@ -51,16 +49,12 @@
                     <td class="td" th:text="${recipe.recipeTag}"></td>
                     <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
                 </div>
-
             </tr>
             </tbody>
         </table>
-
     </div>
-
     <p><a href="/newRecipe">Add a new recipe</a></p>
-
-    </div>
+</div>
 
 </body>
 </html>
