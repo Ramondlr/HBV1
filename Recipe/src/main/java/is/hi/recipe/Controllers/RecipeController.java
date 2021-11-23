@@ -38,7 +38,7 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/userRecipe", method = RequestMethod.GET)
-    public String userRecipeGET(Model model, @NotNull HttpSession session){
+    public String userRecipeGET(Model model, @NotNull HttpSession session, String keyword){
         //Call a method in a service class
         List<Recipe> allRecipes = recipeService.findAll();
         User sessionUser = (User) session.getAttribute("LoggedInUser");
@@ -49,16 +49,17 @@ public class RecipeController {
 
         if (!recipeService.hasUserRecipe(allRecipes, id)) allRecipes = null;
 
-        //Add some data to the model
-        model.addAttribute("recipes", allRecipes);
-        // Sjáum hér að sessionUser sýnir okkur ID hjá currentlyLoggedInUser, notum það til að sýna uppskriftir sem sá
-        // notandi á og tengja saman nýjar uppskriftir við
-        // System.out.println("'useRecipeGET'-Session user ID: " + sessionUser.getID());
         model.addAttribute("LoggedInUser", sessionUser);
 
-        return "userRecipe";
-    }
+        if (keyword != null) {
+            model.addAttribute("recipes", recipeService.findByKeyword(keyword));
+        }
+        else {
+            model.addAttribute("recipes", allRecipes);
+        }
 
+            return "userRecipe";
+    }
 
 
     @RequestMapping(value = "/newRecipe", method = RequestMethod.GET)
