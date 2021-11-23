@@ -12,15 +12,16 @@
 
 <header class="userRecipe_header">
     <div class="welcome_box1">
-        <h2 class ="h2_welcome_name">Welcome,  </h2>
+        <h2 class="h2_welcome_name">Welcome,  </h2>
         <p th:text="${LoggedInUser.username}"></p>
         <!-- <p th:text="${LoggedInUser.ID}"></p>  Þetta sýnir userID-->
     </div>
 
-    <div class = "welcome_box2">
-        <input type="search" id="query" name="q" placeholder="Search...">
-    <button>Search</button>
-        
+    <div class="welcome_box2">
+        <form th:action="@{/userRecipe}" th:object="${recipes}" method="get">
+            <input type="text" id="txtSearch" name="keyword" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
     </div>
     <div class = "welcome_box3">
          <a href="/logout"><i class="fa fa-sign-out"></i></a>
