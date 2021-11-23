@@ -61,13 +61,9 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public boolean hasUserRecipe(List<Recipe> allRecipes, long id){
-        int i = 0;
         for (Recipe recipe : allRecipes){
-            if (id == recipe.getUserID()) i++;
-            if ( i > 0) break;
+            if (id == recipe.getUserID()) return true;
         }
-        return (i != 0);
+        return false;
     }
-    // TODO editRecipe
-
 }
