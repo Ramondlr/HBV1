@@ -66,9 +66,4 @@ public class RecipeServiceImplementation implements RecipeService {
         }
         return false;
     }
-
-    // Get recipes by keyword
-    public List<Recipe> findByKeyword(String keyword) {
-        return recipeRepository.findByKeyword(keyword);
-    }
 }
