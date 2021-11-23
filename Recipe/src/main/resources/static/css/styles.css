@@ -225,39 +225,24 @@ label {
 }
 
 .img1, .img2, .img3, .img4, .img5 {
+  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
   background-color: #cccccc; /* Used if the image is unavailable */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  padding: 100px;
   border-radius: 25px;
-
+  height: 500px; /* You must set a specified height */
+  padding: 100px;
+  text-align: center;
 
 }
 .img1 {
-  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
   height: 100%;
   width: 100%;/* You must set a specified height */
   text-align: center;
 }
 
-.img2 {
-  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
-  height: 500px; /* You must set a specified height */
-}
-
-.img3 {
-  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
-  height: 500px; /* You must set a specified height */
-}
-
-.img4 {
-  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
-  height: 500px; /* You must set a specified height */
-}
-
 .img5 {
-  background-image: url("https://media.discordapp.net/attachments/794232202253959211/907716885028675584/image.jpg")!important;
   height: 100%;
   width: 100%;/* You must set a specified height */
   border-radius: 50px;
