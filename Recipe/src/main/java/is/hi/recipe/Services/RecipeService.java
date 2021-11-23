@@ -11,4 +11,5 @@ public interface RecipeService {
     Recipe save(Recipe recipe);
     void delete(Recipe recipe);
     void deleteRecipeImage(Recipe recipe);
+    public boolean hasUserRecipe(List<Recipe> allRecipes, long id);
 }

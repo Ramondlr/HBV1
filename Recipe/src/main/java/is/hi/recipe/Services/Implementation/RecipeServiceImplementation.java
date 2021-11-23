@@ -58,6 +58,16 @@ public class RecipeServiceImplementation implements RecipeService {
             System.out.println("error deleting recipeImage");
         }
     }
+
+    @Override
+    public boolean hasUserRecipe(List<Recipe> allRecipes, long id){
+        int i = 0;
+        for (Recipe recipe : allRecipes){
+            if (id == recipe.getUserID()) i++;
+            if ( i > 0) break;
+        }
+        return (i != 0);
+    }
     // TODO editRecipe
 
 }

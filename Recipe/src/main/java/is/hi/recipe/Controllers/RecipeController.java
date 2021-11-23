@@ -43,8 +43,12 @@ public class RecipeController {
         List<Recipe> allRecipes = recipeService.findAll();
         User sessionUser = (User) session.getAttribute("LoggedInUser");
         // sessionUser.getID() --> svona náum við í userID
+        long id = sessionUser.getID();
+        //if (allRecipes.isEmpty()) allRecipes = null;
 
-        if (allRecipes.isEmpty()) allRecipes = null;
+
+        if (!recipeService.hasUserRecipe(allRecipes, id)) allRecipes = null;
+
         //Add some data to the model
         model.addAttribute("recipes", allRecipes);
         // Sjáum hér að sessionUser sýnir okkur ID hjá currentlyLoggedInUser, notum það til að sýna uppskriftir sem sá
@@ -131,7 +135,7 @@ public class RecipeController {
         String newImage = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         recipe.setRecipeImage((recipeService.findByID(recipe.getID())).getRecipeImage());
 
-        if(newImage != "") {
+        if(!newImage.isEmpty()) {
             recipeService.deleteRecipeImage(recipe);
             recipe.setRecipeImage(newImage);
         }
