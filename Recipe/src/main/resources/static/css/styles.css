@@ -4,6 +4,12 @@
 a {
     text-decoration: none;
 }
+.back_to_recipe{
+  text-align: left;
+  margin-left: 5px;
+
+}
+
 
 .h2_welcome_name{
   padding-right:  10px;
@@ -293,3 +299,5 @@ label {
   max-width: 300px;
   max-height: 300px;
 }
+
+

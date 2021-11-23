@@ -23,6 +23,7 @@ public class Recipe {
     private String recipeImage;
 
 
+
     // Many recipes for a user
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;

@@ -19,5 +19,4 @@ public class FileSaver {
             throw new IOException("Could not save image file: " + fileName, ioe);
         }
     }
-
 }

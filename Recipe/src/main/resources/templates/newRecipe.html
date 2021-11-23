@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <html xmlns:th="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <title>Add a new Recipe</title>
 </head>
+
 <div class="img4">
 <body class="body">
 
-<h2 class="signup-h2">Add A New Recipe</h2>
-<div>
-    <form action="#" th:action="@{/newRecipe}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+<h2 class="signup-h2">Add A Recipe</h2>
 
+<div>
+
+    <form action="#" th:action="@{/newRecipe}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+        <div class="recipe">
         <label for="recipeTitle">Name your recipe</label>
         <input type="text" th:field="*{recipeTitle}" id="recipeTitle" placeholder="Title">
         <span th:if="${#fields.hasErrors('recipeTitle')}" th:errors="*{title}"></span>
@@ -39,7 +43,15 @@
         <div class = "form-field2">
         <input class = "btn" type="submit" value="Add Recipe">
         </div>
+
+        </div>
     </form>
+
+    <div class = "back_to_recipe" >
+        <a class = "back_to_recipe" href="/userRecipe">Back to recipes</a>
+    </div>
+
+
 
     <!--
     <form action="#" th:action="@{/newRecipe}" method="post" enctype="multipart/form-data">
