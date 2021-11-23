@@ -49,7 +49,7 @@
                 <div th:if="${recipe.userID} == ${LoggedInUser.ID}">
                     <td class="td" th:text="${recipe.recipeTitle}"></td>
                     <td class="td" th:text="${recipe.recipeTag}"></td>
-                    <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
+                    <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}"><i class="fa fa-eye"></i></a></td>
                 </div>
             </tr>
             </tbody>
