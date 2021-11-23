@@ -16,22 +16,22 @@
     <form action="#" th:action="@{/editRecipe}" th:object="${recipes}" method="post" enctype="multipart/form-data">
 
         <div class="recipe" th:each="recipe : ${recipes}">
-            <label for="recipeTitle">Title</label>
+            <label for="recipeTitle">Edit title</label>
             <input type="hidden" th:field="${recipes.ID}" id="recipeID" placeholder="Title">
             <input type="text" th:field="*{recipeTitle}" id="recipeTitle" placeholder="Title">
             <span th:if="${#fields.hasErrors('recipeTitle')}" th:errors="*{title}"></span>
 
-            <label for="recipeText">Recipe</label>
+            <label for="recipeText">Edit recipe</label>
             <!-- I replaced input with textarea
             <input type="text" th:field="*{recipeText}" id="recipeText" placeholder="Text"> -->
             <textarea class = "textarea_newRecipe" type ="text" th:field="*{recipeText}" id="recipeText" placeholder="Recipe" rows="4" cols="50"></textarea>
             <span th:if="${#fields.hasErrors('recipeText')}" th:errors="*{recipeText}"></span>
 
-            <label for="recipeTag">Tag</label>
+            <label for="recipeTag">Edit tag</label>
             <input class = "textarea_newRecipe" type="text" th:field="*{recipeTag}" id="recipeTag" placeholder="Tag">
             <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag}"></span>
 
-            <label for="fileImage">Image</label>
+            <label for="fileImage">Change image</label>
             <input class = "input_chooseFile" type="file" id="fileImage" name="image" accept="image/jpg, image/jpeg, image/png"/>
             <!--
             <label for="image">Image</label>
@@ -46,7 +46,7 @@
     </form>
 
     <div class = "back_to_recipe" >
-    <a  href="/userRecipe">Back to recipes</a>
+    <a class = "a_back_to_recipe" href="/userRecipe">Back to recipes</a>
     </div>
 
 </div>

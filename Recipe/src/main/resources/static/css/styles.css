@@ -2,16 +2,18 @@
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 a:visited{
-  color:blue;
+  color:black;
 }
 
 .back_to_recipe{
-  text-align: left;
-  margin-left: 5px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
 }
 
 .h2_welcome_name{
@@ -74,6 +76,7 @@ h2.signup-h2{
   overflow: auto;
   margin: 0;
   padding: 0;
+
 }
 
 table{
@@ -233,7 +236,7 @@ label {
   border-radius: 25px;
   height: 500px; /* You must set a specified height */
   padding: 100px;
-  text-align: center;
+  box-shadow: 3px 6px 9px rgba( 0.16,  0.16, 0.16, 0.16);
 
 }
 .img1 {
