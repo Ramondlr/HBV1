@@ -54,7 +54,9 @@ h2 {
 
 .welcome_box3{
   justify-items: flex-end;
-  text-align: right;
+  justify-content: center;
+  align-items: center;
+
 }
 
 
