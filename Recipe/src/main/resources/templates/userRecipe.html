@@ -22,7 +22,7 @@
     </div>
 
     <div class="welcome_box3">
-        <p> <a href="/logout">logout</a></p>
+        <p> <a href="/logout">Logout</a></p>
     </div>
 
 </header>
@@ -30,11 +30,10 @@
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
                                 our model.attribute() metohd in our RecipeController inside our
                                 homePage method.-->
-    <h2  th:case="null">No recipes yet!</h2>
+    <h2 th:case="null">No recipes yet!</h2>
     <div th:case="*">
         <h2 class="h2_userRecipe">Recipes</h2>
         <table >
-
             <thead>
             <tr>
                 <th>Title</th>
@@ -42,7 +41,6 @@
                 <th> </th>
             </tr>
             </thead>
-
             <tbody>
             <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
                                                             where recipe exists in a repo of recipes -->
@@ -51,14 +49,12 @@
                     <td class="td" th:text="${recipe.recipeTag}"></td>
                     <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}">View</a></td>
                 </div>
-
             </tr>
             </tbody>
         </table>
-
     </div>
     <p><a href="/newRecipe">Add a new recipe</a></p>
-    </div>
+</div>
 
 </body>
 </html>

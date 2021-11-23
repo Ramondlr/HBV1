@@ -10,7 +10,7 @@
 <div class="img4">
 <body class="body">
 
-<h2 class="signup-h2">Edit Your Recipe</h2>
+<h2 class="signup-h2">Edit Recipe</h2>
 <div>
     <!-- th:action="@{/editRecipe}"  -> th:action skal ekki innihalda /{id} eftir /editRecipe  -->
     <form action="#" th:action="@{/editRecipe}" th:object="${recipes}" method="post" enctype="multipart/form-data">
@@ -32,7 +32,7 @@
             <span th:if="${#fields.hasErrors('recipeTag')}" th:errors="*{recipeTag}"></span>
 
             <label for="fileImage">Image</label>
-            <input type="file" id="fileImage" name="image" accept="image/jpg, image/jpeg, image/png"/>
+            <input class = "input_chooseFile" type="file" id="fileImage" name="image" accept="image/jpg, image/jpeg, image/png"/>
             <!--
             <label for="image">Image</label>
             <input class = "textarea_newRecipe" type="file" th:field="*{image}" id="image">
@@ -44,7 +44,11 @@
             </div>
         </div>
     </form>
-    <a href="/userRecipe">Back to recipes</a>
+
+    <div class = "back_to_recipe" >
+    <a  href="/userRecipe">Back to recipes</a>
+    </div>
+
 </div>
 </div>
 </body>

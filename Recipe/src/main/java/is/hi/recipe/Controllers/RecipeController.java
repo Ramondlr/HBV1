@@ -38,12 +38,13 @@ public class RecipeController {
     }
 
     @RequestMapping(value = "/userRecipe", method = RequestMethod.GET)
-    public String userRecipeGET(@NotNull Model model, @NotNull HttpSession session){
+    public String userRecipeGET(Model model, @NotNull HttpSession session){
         //Call a method in a service class
         List<Recipe> allRecipes = recipeService.findAll();
         User sessionUser = (User) session.getAttribute("LoggedInUser");
         // sessionUser.getID() --> svona náum við í userID
 
+        if (allRecipes.isEmpty()) allRecipes = null;
         //Add some data to the model
         model.addAttribute("recipes", allRecipes);
         // Sjáum hér að sessionUser sýnir okkur ID hjá currentlyLoggedInUser, notum það til að sýna uppskriftir sem sá
