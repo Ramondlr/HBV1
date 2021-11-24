@@ -34,7 +34,7 @@
 <div class="table" th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
                                 our model.attribute() metohd in our RecipeController inside our
                                 homePage method.-->
-    <h2 th:case="null">No recipes yet!</h2>
+    <h2 class="No_recipes_jet" th:case="null">No recipes yet!</h2>
     <div th:case="*">
         <a href="/userRecipe"><h2 class="h2_userRecipe">Recipes</h2></a>
         <table>
@@ -58,8 +58,8 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <p><a href="/newRecipe">Add a new recipe</a></p>
+    <div class ="add_new_recipe_button">
+        <p ><a href="/newRecipe">Add a new recipe</a></p>
     </div>
 </div>
 

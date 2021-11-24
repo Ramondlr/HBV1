@@ -9,6 +9,12 @@ a:visited{
   color:black;
 }
 
+.add_new_recipe_button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .back_to_recipe{
   display: flex;
   justify-content: center;
@@ -25,13 +31,14 @@ h2 {
   font-size: 50px;
   font-family: sans, serif; color:  #47AB11;
   -webkit-text-stroke: 1px black;
+  text-align: center;
 
 }
 
 .login-h2{
   text-align: left;
-
 }
+
 .h2_userRecipe{
   text-align: center;
 }
@@ -66,6 +73,9 @@ h2 {
 h2.signup-h2{
   text-align: left;
 }
+h2.No_recipes_jet{
+
+}
 
 .body {
   font-family: 'Lato', sans-serif;
@@ -86,6 +96,9 @@ div.table{
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px 5px 0px 0px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 table{
