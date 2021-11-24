@@ -20,7 +20,7 @@
 
         <div class="welcome_box2">
             <form th:action="@{/userRecipe}" method="get">
-                <input type="text" id="txtSearch" name="keyword">
+                <input type="text" id="txtSearch" name="keyword", placeholder="Search">
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -39,29 +39,28 @@
         <a href="/userRecipe"><h2 class="h2_userRecipe">Recipes</h2></a>
         <table>
             <thead>
-            <tr>
-                <th>Title</th>
-                <th>Tag</th>
-                <th> </th>
-            </tr>
+                <tr>
+                    <th>Title</th>
+                    <th>Tag</th>
+                    <th> </th>
+                </tr>
             </thead>
-            <tbody>
-            <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop
-                                                            where recipe exists in a repo of recipes -->
-                <div th:if="${recipe.userID} == ${LoggedInUser.ID}">
-                    <td class="td" th:text="${recipe.recipeTitle}"></td>
-                    <td class="td" th:text="${recipe.recipeTag}"></td>
-                    <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}"><i class="fa fa-eye"></i></a></td>
-                </div>
 
-            </tr>
+            <tbody>
+                <tr th:each="recipe : ${recipes}"> <!-- th=thymeleaf -> th:each == for each loop                                                      where recipe exists in a repo of recipes -->
+                    <div th:if="${recipe.userID} == ${LoggedInUser.ID}">
+                        <td class="td" th:text="${recipe.recipeTitle}"></td>
+                        <td class="td" th:text="${recipe.recipeTag}"></td>
+                        <td><a th:href="@{/viewRecipe/{id}(id=${recipe.ID})}"><i class="fa fa-eye"></i></a></td>
+                    </div>
+                </tr>
             </tbody>
         </table>
     </div>
+
     <div class ="add_new_recipe_button">
         <p ><a href="/newRecipe">Add a new recipe</a></p>
     </div>
 </div>
-
 </body>
 </html>
