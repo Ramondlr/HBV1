@@ -104,7 +104,10 @@ public class RecipeController {
 
         if ((recipe.getRecipeTitle().isEmpty()) && (recipe.getRecipeText().isEmpty())
                 && (recipe.getRecipeTag().isEmpty()) && (recipe.getRecipeImage().isEmpty()))
-            return "redirect:/userRecipe";
+            return "redirect:/newRecipe";
+
+        if ((recipe.getRecipeTitle().isEmpty()) || ((recipe.getRecipeText().isEmpty()) && (recipe.getRecipeImage().isEmpty())))
+            return "redirect:/newRecipe";
 
         // Hér náum við í info um currentlyLoggedInUser
         User sessionUser = (User) session.getAttribute("LoggedInUser");
