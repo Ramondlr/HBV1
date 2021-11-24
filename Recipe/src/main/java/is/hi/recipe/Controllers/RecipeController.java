@@ -52,7 +52,8 @@ public class RecipeController {
         model.addAttribute("LoggedInUser", sessionUser);
 
         if (keyword != null) {
-            model.addAttribute("recipes", recipeService.findByKeyword(keyword));
+            List<Recipe> foundRecipes = recipeService.findByKeyword(keyword);
+            model.addAttribute("recipes", foundRecipes);
         }
         else {
             model.addAttribute("recipes", allRecipes);

@@ -4,6 +4,7 @@ import is.hi.recipe.Persistence.Entities.Recipe;
 import is.hi.recipe.Persistence.Repositories.RecipeRepository;
 import is.hi.recipe.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -67,6 +68,8 @@ public class RecipeServiceImplementation implements RecipeService {
         return false;
     }
 
+    @Query(value = "select * from recipes r where r.recipe_Title like '%keyword%' or r.recipe_text like '%keyword%' or r.recipe_tag like '%keyword%'", nativeQuery = true)
+    @Override
     public List<Recipe> findByKeyword(String keyword) {
         return recipeRepository.findByKeyword(keyword);
     }

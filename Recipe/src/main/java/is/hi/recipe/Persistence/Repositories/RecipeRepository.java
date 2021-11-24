@@ -20,7 +20,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     List<Recipe> findByRecipeTitle(String recipeTitle);
     Recipe findByID(long id);
 
-    @Query(value = "select * from recipes r where r.recipe_Title like '%keyword%'", nativeQuery = true)
+    @Query(value = "select * from recipes r where r.recipe_Title like '%keyword%' or r.recipe_text like '%keyword%' or r.recipe_tag like '%keyword%'", nativeQuery = true)
     List<Recipe> findByKeyword(@Param("keyword") String keyword);
 
 }

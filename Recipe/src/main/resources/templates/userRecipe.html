@@ -18,7 +18,7 @@
     </div>
 
     <div class="welcome_box2">
-        <form th:action="@{/userRecipe}" method="get">
+        <form action="#" th:action="@{/userRecipe}" method="get">
             <input type="text" id="txtSearch" name="keyword">
             <button type="submit">Search</button>
         </form>
@@ -36,8 +36,8 @@
                                 homePage method.-->
     <h2 th:case="null">No recipes yet!</h2>
     <div th:case="*">
-        <h2 class="h2_userRecipe">Recipes</h2>
-        <table >
+        <a href="/userRecipe"><h2 class="h2_userRecipe">Recipes</h2>
+        <table>
             <thead>
             <tr>
                 <th>Title</th>
@@ -56,10 +56,11 @@
             </tr>
             </tbody>
         </table>
-        <div>
-            <p><a href="/newRecipe">Add a new recipe</a></p>
-        </div>
     </div>
+    <div>
+        <p><a href="/newRecipe">Add a new recipe</a></p>
+    </div>
+</div>
 
 </body>
 </html>
