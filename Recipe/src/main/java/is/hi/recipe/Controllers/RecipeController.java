@@ -6,6 +6,7 @@ import is.hi.recipe.Persistence.Entities.User;
 import is.hi.recipe.Services.RecipeService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -52,8 +53,8 @@ public class RecipeController {
         model.addAttribute("LoggedInUser", sessionUser);
 
         if (keyword != null) {
-            List<Recipe> foundRecipes = recipeService.findByKeyword(keyword);
-            model.addAttribute("recipes", foundRecipes);
+            System.out.println("Niðurstöður fyrir '" +  keyword + "': " + recipeService.findByKeyword(keyword));
+            model.addAttribute("recipes", recipeService.findByKeyword(keyword));
         }
         else {
             model.addAttribute("recipes", allRecipes);

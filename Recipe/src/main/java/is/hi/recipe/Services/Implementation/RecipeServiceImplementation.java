@@ -68,7 +68,6 @@ public class RecipeServiceImplementation implements RecipeService {
         return false;
     }
 
-    @Query(value = "select * from recipes r where r.recipe_Title like '%keyword%' or r.recipe_text like '%keyword%' or r.recipe_tag like '%keyword%'", nativeQuery = true)
     @Override
     public List<Recipe> findByKeyword(String keyword) {
         return recipeRepository.findByKeyword(keyword);
