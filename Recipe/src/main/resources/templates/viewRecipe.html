@@ -8,7 +8,7 @@
 
 </head>
 <body class="body">
-<div>
+<div class="view">
     <!-- th=thymeleaf -> th:each == for each loop where recipe exists in a repo of recipes -->
     <div class="recipe">
 
@@ -32,12 +32,13 @@
         </div>
 
         <!-- <p th:text="${recipe.recipeImage}"></p> -->
+    </div >
+    <div class="view_del_edit_back">
+        <p><a  th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></p>
+        <p><a th:href="@{/editRecipe/{id}(id=${recipe.ID})}">Edit recipe</a></p>
+        <p><a href="/userRecipe">Back to recipes</a></p>
     </div>
-    <p><a  th:href="@{/delete/{id}(id=${recipe.ID})}">Delete</a></p>
-
-    <p><a th:href="@{/editRecipe/{id}(id=${recipe.ID})}">Edit recipe</a></p>
-    <p><a href="/userRecipe">Back to recipes</a></p>
-</div>
+    </div>
 
 
 </body>

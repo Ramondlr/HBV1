@@ -114,7 +114,18 @@ table{
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
+}
 
+div.view{
+  width: 70%;
+  border-radius: 5px 5px 0px 0px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+
+div.view_del_edit_back{
+  padding-left: 10px;
 }
 
 th, td {
