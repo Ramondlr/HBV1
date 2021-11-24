@@ -8,8 +8,7 @@
     <title>Recipes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
-
+<body>
 <header class="userRecipe_header">
     <div class="welcome_box1">
         <h2 class ="h2_welcome_name">Welcome,  </h2>
@@ -30,7 +29,6 @@
     </div>
 
 </header>
-
 <div th:switch="${recipes}">  <!--"${books}" -> this check's if there is a thing called 'recipes' in
                                 our model.attribute() metohd in our RecipeController inside our
                                 homePage method.-->
