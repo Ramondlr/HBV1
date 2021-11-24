@@ -53,23 +53,25 @@ h2 {
 }
 
 .welcome_box1 {
-  flex: 1;
+  flex: auto;
   justify-items: flex-start;
   font-size: 25px;
 
 }
 
 .welcome_box2 {
+  flex: auto;
   align-items: center;
-  width: 53%;
 
 }
 .search{
-  width: auto;
+  width: 175px;
   justify-content: center;
+  text-align: left;
 }
 
 .welcome_box3{
+
   justify-items: flex-end;
   justify-content: center;
   align-items: center;
