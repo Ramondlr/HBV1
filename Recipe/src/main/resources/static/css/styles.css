@@ -38,6 +38,9 @@ h2 {
 
 .userRecipe_header{
   display: flex;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .welcome_box1 {
@@ -60,7 +63,6 @@ h2 {
 
 }
 
-
 h2.signup-h2{
   text-align: left;
 }
@@ -79,11 +81,19 @@ h2.signup-h2{
 
 }
 
+div.table{
+  align-content: center;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 table{
   align-content: center;
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
+
 }
 
 th, td {
@@ -91,6 +101,7 @@ th, td {
   text-align: center;
   border-bottom: 1px solid #ddd;
 }
+
 
 tr:hover {background-color: lightgreen}
 
