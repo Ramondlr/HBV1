@@ -6,17 +6,14 @@ import is.hi.recipe.Persistence.Entities.User;
 import is.hi.recipe.Services.RecipeService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.nio.file.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,20 +21,32 @@ import java.util.Objects;
 public class RecipeController {
     private RecipeService recipeService;
 
-    User user;
-
+    /**
+     *                      RecipeController calls service when needed to be used with entity Recipe.
+     * @param recipeService gets the recipe service class.
+     */
     @Autowired
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
-    // Strengurinn inní 'RequestMapping' segir okkur að þegar vefsíðan er stödd á forsíðu þá á hún að skila 'home'
-    // sem er 'return "home"' og þetta 'home' er nafnið á html skjalinu okkar í templates
+    /**
+     *          homePage retrieves the home.html from templates and presents that to the user,
+     *          the user then either logs in, or signs up for an account.
+     * @return  home page of our website.
+     */
     @RequestMapping("/")
     public String homePage(){
         return "home";
     }
 
+    /**
+     * userRecipeGet retrieves the userRecipe.html from templates after the user has logged in successfully.
+     * @param model   Presents all recipes of a user on the userRecipe.html template, if the user has any.
+     * @param session Has been created by each user when a user is logged in.
+     * @param keyword A search term to list through the recipes of a user and returns a list of recipes that matches.
+     * @return        userRecipe.html template either with a list of recipes or an empty template.
+     */
     @GetMapping(value ="/userRecipe")
     public String userRecipeGET(Model model, @NotNull HttpSession session, String keyword){
         //Call a method in a service class
@@ -46,14 +55,11 @@ public class RecipeController {
         // sessionUser.getID() --> svona náum við í userID
         long id = sessionUser.getID();
         //if (allRecipes.isEmpty()) allRecipes = null;
-
-
         if (!recipeService.hasUserRecipe(allRecipes, id)) allRecipes = null;
 
         model.addAttribute("LoggedInUser", sessionUser);
 
         if (keyword != null) {
-            System.out.println("Niðurstöður fyrir '" +  keyword + "': " + recipeService.findByKeyword(keyword));
             model.addAttribute("recipes", recipeService.findByKeyword(keyword));
         }
         else {
@@ -64,15 +70,29 @@ public class RecipeController {
     }
 
 
-
-    @RequestMapping(value = "/newRecipe", method = RequestMethod.GET)
+    /**
+     *
+     * @param recipe Is not used.
+     * @return newRecipe.html template where the user makes a new recipe.
+     */
+    @GetMapping(value = "/newRecipe")
     public String newRecipeGET(Recipe recipe){
 
         return "newRecipe";
     }
 
-    @RequestMapping(value = "/newRecipe", method = RequestMethod.POST)
-    public String newRecipePOST(Recipe recipe, @NotNull BindingResult result, Model model, HttpSession session,
+    /**
+     * This makes sure to create and store a new recipe in the database for the user.
+     * @param recipe        Request of the recipe class from the entity recipe.
+     * @param result        Binding results from the post action of the newRecipe.html form(action=POST)
+     * @param session       Has been created by each user when a user is logged in.
+     * @param multipartFile Takes in a parameter 'image' for when a user has uploaded an image file.
+     * @return              returns userRecipe.html template with a new recipe added to the list,
+     *                      or newRecipe.html if it had any errors.
+     * @throws IOException
+     */
+    @PostMapping(value = "/newRecipe")
+    public String newRecipePOST(Recipe recipe, @NotNull BindingResult result, HttpSession session,
                                 @RequestParam(name = "image", required = false) MultipartFile multipartFile) throws IOException {
         if(result.hasErrors()){
             return "newRecipe";
@@ -105,9 +125,12 @@ public class RecipeController {
         return "redirect:/userRecipe";
     }
 
-
-    // GET means we're reading something, POST means we're creating something.
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    /**
+     *           Deletes a recipe from a list of recipes from the user.
+     * @param id Takes in the id of the recipe to delete.
+     * @return   userRecipes.html with the deleted recipe no longer on the list nor in the user database.
+     */
+    @GetMapping(value = "/delete/{id}")
     public String deleteRecipe(@PathVariable("id") long id){
         //Business Logic is always on the service that's why we let the recipeService do all the work
         Recipe recipeToDelete = recipeService.findByID(id);
@@ -116,20 +139,31 @@ public class RecipeController {
         return "redirect:/userRecipe";
     }
 
-    @RequestMapping(value = "/viewRecipe/{id}", method = RequestMethod.GET)
+    /**
+     *              Shows the whole recipe (along with an image if the recipe has any).
+     * @param id    Takes in the id of the recipe to show it in the viewRecipe.html template.
+     * @param model Takes in a recipe the user wants to view and sends it to the template.
+     * @return      viewRecipe.html with a recipe the user has selected to view.
+     */
+    @GetMapping(value = "/viewRecipe/{id}")
     public String getRecipe(@PathVariable("id") long id, @NotNull Model model){
         model.addAttribute("recipe", recipeService.findByID(id));
         return "viewRecipe";
     }
 
-    // Birtir uppskrift til að breyta
-    @RequestMapping(value = "/editRecipe/{id}", method = RequestMethod.GET)
+    /**
+     * 
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/editRecipe/{id}")
     public String editRecipeGET(@PathVariable("id") long id, @NotNull Model model){
         model.addAttribute("recipes", recipeService.findByID(id));
         return "editRecipe";
     }
 
-    @RequestMapping(value = "/editRecipe", method = RequestMethod.POST)
+    @PostMapping(value = "/editRecipe")
     public String editRecipePOST(Recipe recipe, HttpSession session, @NotNull BindingResult result,
                                  @RequestParam(name = "image", required = false) MultipartFile multipartFile) throws IOException {
         if(result.hasErrors()){
