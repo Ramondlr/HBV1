@@ -17,6 +17,7 @@ public class Recipe {
 
     private long userID;
     private String recipeTitle;
+    @Column(length = 10000)
     private String recipeText;
     private String recipeTag;
     @Column(nullable = true, length = 64)
