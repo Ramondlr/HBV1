@@ -2,6 +2,7 @@ package is.hi.recipe.Controllers.Rest;
 
 import is.hi.recipe.Persistence.Entities.User;
 import is.hi.recipe.Services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserRestController {
 
     private UserService userService;
+
+    @Autowired
+    public UserRestController(UserService userService) {
+        this.userService = userService;
+    }
+
+
+
     /*
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)

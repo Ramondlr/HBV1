@@ -4,8 +4,6 @@ package is.hi.recipe.Persistence.Entities;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.awt.*;
-import java.util.ArrayList;
 
 @Entity
 @Table(name = "recipes")
