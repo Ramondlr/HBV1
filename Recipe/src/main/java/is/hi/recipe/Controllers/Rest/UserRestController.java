@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserRestController {
 
     private UserService userService;
+    /*
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String signupGET(User user){
@@ -41,4 +42,5 @@ public class UserRestController {
         }
         return "redirect:/";
     }
+     */
 }
