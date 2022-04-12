@@ -17,6 +17,8 @@ public class Recipe {
 
     private long userID;
     private String recipeTitle;
+    @Column(length = 1000000)
+    @Lob
     private String recipeText;
     private String recipeTag;
     @Column(nullable = true, length = 64)
@@ -29,7 +31,6 @@ public class Recipe {
     private User user;
 
 
-    // Gauti er með milliveg (rental) fyrir user or book (hjá okkur user og recipe) ættum við að gera svipað?
     @ManyToOne(fetch = FetchType.LAZY)
     private Recipe recipe;
 

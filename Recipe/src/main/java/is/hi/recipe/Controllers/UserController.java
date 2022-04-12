@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
-    UserService userService;
+    private UserService userService;
 
     /**
      *
