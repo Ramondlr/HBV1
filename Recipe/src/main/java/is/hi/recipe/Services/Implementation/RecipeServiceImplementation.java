@@ -5,6 +5,7 @@ import is.hi.recipe.Persistence.Repositories.RecipeRepository;
 import is.hi.recipe.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -69,7 +70,7 @@ public class RecipeServiceImplementation implements RecipeService {
     }
 
     @Override
-    public List<Recipe> findByKeyword(String keyword) {
+    public List<Recipe> findByKeyword(@Param("keyword") String keyword) {
         return recipeRepository.findByKeyword(keyword);
     }
 }
