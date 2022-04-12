@@ -50,9 +50,7 @@ public class UserController {
             return "redirect:/signup";
         }
         userService.save(user);
-
-        // TODO búa til if condition til að checka ef exists != null þ.e.a.s. ef það er núþegar til user með sama
-        //  username að meðhöndla þá villu.
+        
 
         if(exists == null){
             userService.save(user);
