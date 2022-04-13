@@ -52,7 +52,7 @@ public class UserRestController {
     public RecipeResponse recipeList(@PathVariable("id") Long id) {
         return new RecipeResponse(recipeService.findUserRecipes(id));
     }
-    
+
     /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void loginPOST(User user){
