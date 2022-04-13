@@ -22,4 +22,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
             "or r.recipe_tag like %:keyword% ORDER BY recipe_title ASC, recipe_tag ASC;", nativeQuery = true)
     List<Recipe> findByKeyword(String keyword);
 
+    List<Recipe> findRecipesByUserID(long userID);
+
 }

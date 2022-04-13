@@ -48,4 +48,14 @@ public class UserServiceImplementation implements UserService {
         }
         return null;
     }
+
+    @Override
+    public User signUp(String username, String password) {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            return null;
+        }
+         user = new User(username, password);
+        return userRepository.save(user);
+    }
 }

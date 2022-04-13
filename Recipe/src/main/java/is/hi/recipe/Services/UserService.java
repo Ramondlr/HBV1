@@ -12,4 +12,6 @@ public interface UserService {
     // For us to check when user is logging in if that user exists by trying to match the username and password to
     // something that exists in the database.
     User login(User user);
+
+    User signUp(String username, String password);
 }

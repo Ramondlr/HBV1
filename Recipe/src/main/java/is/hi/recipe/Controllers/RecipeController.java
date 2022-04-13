@@ -55,7 +55,9 @@ public class RecipeController {
         // sessionUser.getID() --> svona náum við í userID
         long id = sessionUser.getID();
         //if (allRecipes.isEmpty()) allRecipes = null;
-        if (!recipeService.hasUserRecipe(allRecipes, id)) allRecipes = null;
+        if (!recipeService.hasUserRecipe(allRecipes, id)) {
+            allRecipes = null;
+        }
 
         model.addAttribute("LoggedInUser", sessionUser);
 

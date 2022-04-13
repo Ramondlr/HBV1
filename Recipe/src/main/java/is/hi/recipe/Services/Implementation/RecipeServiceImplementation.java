@@ -73,4 +73,9 @@ public class RecipeServiceImplementation implements RecipeService {
     public List<Recipe> findByKeyword(@Param("keyword") String keyword) {
         return recipeRepository.findByKeyword(keyword);
     }
+
+    @Override
+    public List<Recipe> findUserRecipes(long userID) {
+        return recipeRepository.findRecipesByUserID(userID);
+    }
 }

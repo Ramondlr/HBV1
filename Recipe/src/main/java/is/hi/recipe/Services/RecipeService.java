@@ -15,4 +15,5 @@ public interface RecipeService {
 
     List<Recipe> findByKeyword(String keyword);
 
+    List<Recipe> findUserRecipes(long userID);
 }
