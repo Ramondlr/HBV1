@@ -49,7 +49,7 @@ public class UserRestController {
 
     @GetMapping("/api/{id}/recipeList")
     @ResponseBody
-    public RecipeResponse recipeList(@PathVariable Long id) {
+    public RecipeResponse recipeList(@PathVariable("id") Long id) {
         return new RecipeResponse(recipeService.findUserRecipes(id));
     }
     /*
