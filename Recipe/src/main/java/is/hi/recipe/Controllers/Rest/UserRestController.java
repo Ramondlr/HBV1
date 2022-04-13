@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class UserRestController {
 
@@ -50,7 +52,14 @@ public class UserRestController {
     public RecipeResponse recipeList(@PathVariable Long id) {
         return new RecipeResponse(recipeService.findUserRecipes(id));
     }
+    /*
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public void loginPOST(User user){
 
+        userService.login(user);
+    }
+
+     */
 
 
     /*
