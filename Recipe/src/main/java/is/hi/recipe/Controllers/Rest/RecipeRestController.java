@@ -24,8 +24,9 @@ public class RecipeRestController {
     public RecipeRestController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
-    @RequestMapping("/recipes")
-    public List<Recipe> getQuestions() throws InterruptedException {
+
+    @RequestMapping("/api/recipes")
+    public List<Recipe> getRecipes() throws InterruptedException {
 
         List<Recipe> recipes = recipeService.findAll();
 
@@ -50,11 +51,24 @@ public class RecipeRestController {
     /*
     @GetMapping(value = "/delete/{id}")
     public void deleteRecipe(@PathVariable("id") long id){
+
+    @RequestMapping(value = "/api/recipe/{id}")
+    public Recipe getRecipe(@PathVariable("id") long id) throws InterruptedException {
+
+        Recipe recipes = recipeService.findByID(id);
+
+        return recipes;
+    }
+
+
+    @RequestMapping(value = "/api/(delete/{id}")
+    public boolean deleteRecipe(@PathVariable("id") long id){
+>>>>>>> 65564254f8deec1edf73a75b9012c16de7c58fed
         //Business Logic is always on the service that's why we let the recipeService do all the work
         Recipe recipeToDelete = recipeService.findByID(id);
         recipeService.delete(recipeToDelete);
-    }
 
-     */
+        return recipeService.findByID(id) != null;
+    }*/
 
 }

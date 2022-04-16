@@ -46,8 +46,6 @@ public class UserRestController {
         return new UserResponse(user);
     }
 
-
-
     /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void loginPOST(User user){
@@ -89,4 +87,11 @@ public class UserRestController {
         return "redirect:/";
     }
      */
+/**
+    @GetMapping("/api/{id}/recipeList")
+    @ResponseBody
+    public RecipeResponse recipeList(@PathVariable("id") Long id) {
+        return new RecipeResponse(recipeService.findUserRecipes(id));
+    }
+*/
 }
