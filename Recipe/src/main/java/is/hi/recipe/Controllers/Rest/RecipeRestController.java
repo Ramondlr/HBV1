@@ -1,14 +1,16 @@
 package is.hi.recipe.Controllers.Rest;
 
+import is.hi.recipe.Controllers.Rest.Request.UserRequest;
+import is.hi.recipe.Controllers.Rest.Response.RecipeResponse;
+import is.hi.recipe.Controllers.Rest.Response.UserResponse;
 import is.hi.recipe.Persistence.Entities.Recipe;
 import is.hi.recipe.Persistence.Entities.User;
 import is.hi.recipe.Services.RecipeService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -28,6 +30,21 @@ public class RecipeRestController {
         List<Recipe> recipes = recipeService.findAll();
 
         return recipes;
+    }
+
+    @GetMapping("/api/{id}/recipeList")
+    @ResponseBody
+    public RecipeResponse recipeList(@PathVariable Long id) {
+        return new RecipeResponse(recipeService.findUserRecipes(id));
+    }
+
+    @PostMapping("/api/saveRecipe")
+    @ResponseBody
+    public RecipeResponse saveRecipe (@RequestBody Recipe recipe) {
+        recipeService.save(recipe);
+        return new RecipeResponse(recipeService.findUserRecipes(recipe.getUserID()));
+        //return new RecipeResponse(recipeService.findByID(recipe.getID()));
+        //return null;
     }
 
     /*

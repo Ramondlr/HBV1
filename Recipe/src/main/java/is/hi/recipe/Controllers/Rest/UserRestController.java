@@ -47,11 +47,7 @@ public class UserRestController {
     }
 
 
-    @GetMapping("/api/{id}/recipeList")
-    @ResponseBody
-    public RecipeResponse recipeList(@PathVariable Long id) {
-        return new RecipeResponse(recipeService.findUserRecipes(id));
-    }
+
     /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void loginPOST(User user){
