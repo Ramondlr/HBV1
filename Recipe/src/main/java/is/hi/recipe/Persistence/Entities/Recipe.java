@@ -20,7 +20,9 @@ public class Recipe {
     private String recipeTag;
     @Column(nullable = true, length = 64)
     private String recipeImage;
-
+    @Lob
+    @Column(name = "image_bytes")
+    private byte[] recipeImageByteArray;
 
 
     // Many recipes for a user
@@ -34,11 +36,12 @@ public class Recipe {
     public Recipe() {
     }
 
-    public Recipe(String title, String text, String tag, String recipeImage) {
+    public Recipe(String title, String text, String tag, String recipeImage, byte[] recipeImageByteArray) {
         this.recipeTitle = title;
         this.recipeText = text;
         this.recipeTag = tag;
         this.recipeImage = recipeImage;
+        this.recipeImageByteArray = recipeImageByteArray;
     }
 
     public long getUserID() {
@@ -92,5 +95,13 @@ public class Recipe {
     @Transient
     public String getRecipeImagePath() {
         return "/upload/recipeImage/" + this.userID + "/" + this.ID + "/" + this.recipeImage;
+    }
+
+    public byte[] getRecipeImageByteArray() {
+        return recipeImageByteArray;
+    }
+
+    public void setRecipeImageByteArray(byte[] recipeImageByteArray) {
+        this.recipeImageByteArray = recipeImageByteArray;
     }
 }
