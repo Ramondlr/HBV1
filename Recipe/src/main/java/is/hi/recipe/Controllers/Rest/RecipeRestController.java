@@ -48,6 +48,16 @@ public class RecipeRestController {
         //return null;
     }
 
+    @GetMapping("/api/{id}/deleteRecipe")
+    @ResponseBody
+    public RecipeResponse deleteRecipe (@PathVariable Long id) {
+        Recipe recipe = recipeService.findByID(id);
+        recipeService.delete(recipe);
+        return new RecipeResponse(recipeService.findUserRecipes(recipe.getUserID()));
+        //return new RecipeResponse(recipeService.findByID(recipe.getID()));
+        //return null;
+    }
+
     /*
     @GetMapping(value = "/delete/{id}")
     public void deleteRecipe(@PathVariable("id") long id){
