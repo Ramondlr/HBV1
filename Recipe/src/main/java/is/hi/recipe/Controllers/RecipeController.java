@@ -181,11 +181,11 @@ public class RecipeController {
 
         String newImage = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         recipe.setRecipeImage((recipeService.findByID(recipe.getID())).getRecipeImage());
-
+        /**
         if(!newImage.isEmpty()) {
             recipeService.deleteRecipeImage(recipe);
             recipe.setRecipeImage(newImage);
-        }
+        }*/
 
         // Vistum nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
         Recipe savedRecipe = recipeService.save((recipe));

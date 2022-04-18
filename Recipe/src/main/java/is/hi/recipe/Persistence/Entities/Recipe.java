@@ -88,9 +88,9 @@ public class Recipe {
     public void setRecipeImage(String recipeImage) {
         this.recipeImage = recipeImage;
     }
-
+    /**
     @Transient
     public String getRecipeImagePath() {
         return "/upload/recipeImage/" + this.userID + "/" + this.ID + "/" + this.recipeImage;
-    }
+    }*/
 }

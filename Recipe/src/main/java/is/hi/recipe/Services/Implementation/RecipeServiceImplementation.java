@@ -47,10 +47,10 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public void delete(Recipe recipe) {
-        deleteRecipeImage(recipe);
+        //deleteRecipeImage(recipe);
         recipeRepository.delete(recipe);
     }
-
+    /**
     @Override
     public void deleteRecipeImage(Recipe recipe) {
         String fileToDeletePath = "src/main/resources/static/" + recipe.getRecipeImagePath();
@@ -59,7 +59,7 @@ public class RecipeServiceImplementation implements RecipeService {
         } catch (IOException e) {
             System.out.println("error deleting recipeImage");
         }
-    }
+    }*/
 
     @Override
     public boolean hasUserRecipe(List<Recipe> allRecipes, long id){

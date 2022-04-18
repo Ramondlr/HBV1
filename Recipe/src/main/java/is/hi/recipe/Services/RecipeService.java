@@ -10,7 +10,7 @@ public interface RecipeService {
     Recipe findByID(long ID);
     Recipe save(Recipe recipe);
     void delete(Recipe recipe);
-    void deleteRecipeImage(Recipe recipe);
+    //void deleteRecipeImage(Recipe recipe);
     boolean hasUserRecipe(List<Recipe> allRecipes, long id);
 
     List<Recipe> findByKeyword(String keyword);
