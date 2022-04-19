@@ -42,6 +42,9 @@ public class RecipeRestController {
     @PostMapping("/api/saveRecipe")
     @ResponseBody
     public RecipeResponse saveRecipe (@RequestBody Recipe recipe) {
+        if (recipe.getRecipeTitle() == "" || (recipe.getRecipeText() == "" && recipe.getRecipeImage() == "")) {
+            return null;
+        }
         recipeService.save(recipe);
         return new RecipeResponse(recipeService.findUserRecipes(recipe.getUserID()));
         //return new RecipeResponse(recipeService.findByID(recipe.getID()));
