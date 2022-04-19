@@ -52,6 +52,17 @@ public class UserRestController {
         return new UserResponse(user);
     }
 
+    @GetMapping("/api/{id}/deleteUser")
+    @ResponseBody
+    public UserResponse deleteUser (@PathVariable Long id) {
+        User user = userService.findByID(id);
+        userService.delete(user);
+        if (userService.findByID(id) != null) {
+            return new UserResponse(user);
+        }
+        return new UserResponse(user);
+    }
+
     /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void loginPOST(User user){

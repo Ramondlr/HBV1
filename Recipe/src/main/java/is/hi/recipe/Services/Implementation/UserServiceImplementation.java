@@ -39,6 +39,11 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public User findByID(Long ID) {
+        return userRepository.findByID(ID);
+    }
+
+    @Override
     public User login(User user) {
         User doesExist = findByUsername(user.getUsername());
         if(doesExist != null){
@@ -48,6 +53,8 @@ public class UserServiceImplementation implements UserService {
         }
         return null;
     }
+
+
 
     @Override
     public User signUp(String username, String password) {
