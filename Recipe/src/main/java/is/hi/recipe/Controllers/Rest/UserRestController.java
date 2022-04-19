@@ -39,10 +39,16 @@ public class UserRestController {
     @PostMapping("/api/signUp")
     @ResponseBody
     public UserResponse signUp (@RequestBody UserRequest userRequest) {
-        User user = userService.signUp(userRequest.getUsername(), userRequest.getPassword());
-        if (user == null) {
+        String userName = userRequest.getUsername();
+        String pwd = userRequest.getPassword();
+        if (userName == null) {
             throw new ResponseStatusException(HttpStatus.IM_USED);
         }
+        if (userName == "" || pwd == "") {
+            //return null;
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE);
+        }
+        User user = userService.signUp(userRequest.getUsername(), userRequest.getPassword());
         return new UserResponse(user);
     }
 
