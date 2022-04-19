@@ -54,13 +54,13 @@ public class UserRestController {
 
     @GetMapping("/api/{id}/deleteUser")
     @ResponseBody
-    public boolean deleteUser (@PathVariable Long id) {
+    public UserResponse deleteUser (@PathVariable Long id) {
         User user = userService.findByID(id);
         userService.delete(user);
         if (userService.findByID(id) == null) {
-            return true;
+            return new UserResponse(user);
         }
-        return false;
+        return null;
     }
 
     /*
