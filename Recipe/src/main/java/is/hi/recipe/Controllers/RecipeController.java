@@ -12,10 +12,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
 import java.util.Objects;
@@ -107,23 +104,6 @@ public class RecipeController {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         recipe.setRecipeImage(fileName);
 
-
-        /*
-        try {
-            BufferedImage bImage = ImageIO.read(new File(fileName)); // Gefur villu:
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ImageIO.write(bImage, "jpg", bos);
-            byte[] data = bos.toByteArray();
-            for (int i = 0; i < data.length; i++) {
-                System.out.println("Data values: " + data[i]);
-            }
-            System.out.println("Það náðist");
-
-        } catch (IOException e) {
-            System.out.println("image reader exception: " + e);
-        }
-        */
-
         if ((recipe.getRecipeTitle().isEmpty()) && (recipe.getRecipeText().isEmpty())
                 && (recipe.getRecipeTag().isEmpty()) && (recipe.getRecipeImage().isEmpty()))
             return "redirect:/newRecipe";
@@ -137,12 +117,8 @@ public class RecipeController {
         recipe.setUserID(sessionUser.getID());
         // Síðan vistum við nýju uppskriftina, með currentlyLoggedInUser ID vistað hjá sér undir userID.
 
-        recipe.setRecipeImageByteArray(multipartFile.getBytes());
-
         Recipe savedRecipe = recipeService.save((recipe));
         String uploadDir = "src/main/resources/static/upload/recipeImage/" + savedRecipe.getUserID() + "/" + savedRecipe.getID();
-
-        System.out.println("Hér er recipe byte array: " + recipe.getRecipeImageByteArray().toString());
 
         try {
             FileSaver.saveFile(uploadDir, fileName, multipartFile);
@@ -177,7 +153,6 @@ public class RecipeController {
     @GetMapping(value = "/viewRecipe/{id}")
     public String getRecipe(@PathVariable("id") long id, @NotNull Model model){
         model.addAttribute("recipe", recipeService.findByID(id));
-
         return "viewRecipe";
     }
 
