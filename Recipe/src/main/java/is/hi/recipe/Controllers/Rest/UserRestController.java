@@ -75,6 +75,18 @@ public class UserRestController {
         return null;
     }
 
+    @PostMapping("/api/changePassword")
+    @ResponseBody
+    public UserResponse changePassword (@RequestBody UserRequest userRequest) {
+        User user = userService.findByUsername(userRequest.getUsername());
+        user.setPassword(userRequest.getPassword());
+        userService.save(user);
+
+        return new UserResponse(user);
+    }
+
+
+
     /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void loginPOST(User user){

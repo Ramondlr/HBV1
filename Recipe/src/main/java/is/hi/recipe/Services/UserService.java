@@ -17,4 +17,5 @@ public interface UserService {
     User login(User user);
 
     User signUp(String username, String password);
+
 }
