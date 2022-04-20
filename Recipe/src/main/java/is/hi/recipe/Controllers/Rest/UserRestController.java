@@ -36,6 +36,18 @@ public class UserRestController {
         return new UserResponse(user);
     }
 
+    @PostMapping("/api/isLoggedIn")
+    @ResponseBody
+    public UserResponse isLoggedIn (@RequestBody UserRequest userRequest) {
+        User user = userService.findByUsername(userRequest.getUsername());
+        String uss = user.getPassword();
+        String usss = userRequest.getPassword();
+        if (user.getPassword().compareTo(userRequest.getPassword()) == 0) {
+            return new UserResponse(user);
+        }
+        return null;
+    }
+
     @PostMapping("/api/signUp")
     @ResponseBody
     public UserResponse signUp (@RequestBody UserRequest userRequest) {
