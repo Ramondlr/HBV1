@@ -10,3 +10,7 @@ Hópverkefni Hugbúnaðarverkefni 1, haust 2021
 <pre>Ísabella Montazeri              ism4@hi.is</pre>
 <pre>Jóhann Karl Hirst               jkh13@hi.is</pre>
 <pre>Ramon de la Rosa                rdl2@hi.is</pre>
+
+## Framhaldsverkefni
+Hugbúnaðarverkefni 2, vor 2021
+https://github.com/hrolfurj/Recipe-Android
