@@ -13,4 +13,5 @@ Hópverkefni Hugbúnaðarverkefni 1, haust 2021
 
 ## Framhaldsverkefni
 Hugbúnaðarverkefni 2, vor 2021
+
 https://github.com/hrolfurj/Recipe-Android
